@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content" android:id="@+id/linearLayout2"
+                                                   android:background="@android:color/white">
+
+    <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp" app:srcCompat="@drawable/afl_icon" android:id="@+id/betslip_entry_icon"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"/>
+    <TextView
+            android:text="1."
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="@+id/betslip_entry_icon"
+            android:id="@+id/entry_number" app:layout_constraintStart_toEndOf="@+id/betslip_entry_icon"
+            android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bet_chosen_team"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="@+id/entry_number"
+            app:layout_constraintBottom_toBottomOf="@+id/entry_number"
+            app:layout_constraintStart_toEndOf="@+id/entry_number" android:layout_marginStart="8dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bet_type" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/bet_chosen_team"
+            android:textSize="@dimen/small_text"
+            app:layout_constraintStart_toStartOf="@+id/entry_number"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_text"
+            android:id="@+id/event_name" app:layout_constraintStart_toStartOf="@+id/bet_type"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/bet_type"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_delete"
+            android:id="@+id/delete_bet" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+    <TextView
+            android:text="0.00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bet_odds"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="@+id/bet_chosen_team" app:layout_constraintEnd_toStartOf="@+id/delete_bet"
+            android:layout_marginEnd="8dp" app:layout_constraintBottom_toBottomOf="@+id/delete_bet"
+    />
+    <TextView
+            android:text="Potential Returns"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/small_text"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/event_name"/>
+    <TextView
+            android:text="0.00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_text"
+            android:textColor="@android:color/black"
+            android:id="@+id/potential_returns" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" app:layout_constraintEnd_toEndOf="@+id/textView9"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>

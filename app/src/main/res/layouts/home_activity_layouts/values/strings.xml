@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="win_or_place_string">Win or Place</string>
+    <string name="clicked_button">Clicked</string>
+    <string name="unclicked_button">unClicked</string>
+
+</resources>

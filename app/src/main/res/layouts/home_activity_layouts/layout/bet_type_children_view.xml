@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="@dimen/bet_type_child_recyclerview_height"
+        android:background="@android:color/white"
+        android:clickable="true">
+
+    <TextView
+            android:id="@+id/child_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|start" tools:text="Draymond to win" android:layout_marginLeft="12dp"/>
+    <LinearLayout android:layout_width="@dimen/single_bet_button_width" android:layout_height="wrap_content"
+                  style="@style/my_button_style" android:layout_gravity="right" android:id="@+id/bet_button"
+                  android:orientation="vertical"
+                  android:layout_marginTop="4dp"
+                  android:layout_marginRight="20dp" android:layout_marginEnd="20dp">
+        <TextView
+                android:text="1.65"
+                android:textSize="10sp"
+                android:textAllCaps="false"
+                android:layout_height="match_parent" android:layout_width="match_parent" android:gravity="center"
+                android:textColor="@android:color/black" android:id="@+id/odds_tv">
+        </TextView>
+    </LinearLayout>
+    <View
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider"
+    />
+
+</FrameLayout>

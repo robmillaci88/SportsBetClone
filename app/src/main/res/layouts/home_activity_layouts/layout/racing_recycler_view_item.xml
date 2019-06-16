@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="wrap_content"
+                                                   android:layout_height="120dp"
+                                                   android:elevation="5dp"
+                                                   android:background="@drawable/recycler_view_background"
+                                                   android:outlineAmbientShadowColor="#8C9EFF">
+
+    <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/race_place" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:maxLines="1"
+            android:maxLength="20" android:text="Ladies French Open"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/race" android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/race_place" android:maxLines="2"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp" android:textColor="@color/gradient_start"
+            app:layout_constraintHorizontal_bias="0.0" android:textSize="12sp"/>
+    <TextView
+            android:text="07/06/19 18:00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_time" android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/race" android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="@+id/race"/>
+    <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp" app:srcCompat="@drawable/afl_icon"
+            android:id="@+id/icon" android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/date_time" app:layout_constraintStart_toStartOf="@+id/date_time"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_to_go" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp" android:textSize="10sp"
+            android:gravity="center"
+            android:background="@drawable/timer_background_black" android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/icon"
+            app:layout_constraintTop_toTopOf="@+id/icon"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

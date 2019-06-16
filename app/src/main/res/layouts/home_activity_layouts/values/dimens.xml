@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="betslip_image_width">40dp</dimen>
+    <dimen name="betslip_image_heigh">62dp</dimen>
+    <dimen name="betslip_image_margin">8dp</dimen>
+    <dimen name="betslip_amount_width">40dp</dimen>
+    <dimen name="bet_type_child_recyclerview_height">60dp</dimen>
+    <dimen name="single_bet_button_width">100dp</dimen>
+    <dimen name="betting_tab_layout_height">40dp</dimen>
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="betslip_header_height">70dp</dimen>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                     android:background="@color/very_light_grey"
+                                                     android:id="@+id/main_view"
+                                                     android:layout_width="match_parent"
+                                                     android:layout_height="match_parent">
+    <include
+            layout="@layout/collapsable_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+    <include
+            layout="@layout/tab_layout"
+            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            app:layout_anchor="@+id/app_bar"
+            app:layout_anchorGravity="bottom"
+            app:layout_collapseMode="none"/>
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:layout_marginTop="?attr/actionBarSize"
+                                           android:id="@+id/scrollView"
+                                           app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                                           android:background="@color/background_colour_grey">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/main_fragment" android:background="@color/background_colour_grey"
+                    android:layout_height="wrap_content">
+            </FrameLayout>
+
+            <ImageView android:layout_width="match_parent" android:layout_height="400dp"
+                       android:background="@drawable/partners_img"
+                       android:scaleType="centerCrop"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

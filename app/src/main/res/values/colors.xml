@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#005CA1</color>
+    <color name="colorPrimaryDark">#005CA1</color>
+    <color name="colorAccent">#D3D3D3</color>
+    <color name="gradient_start">#005CA1</color>
+    <color name="gradient_end">#0083b0</color>
+    <color name="gradnent_end_two">#00a3db</color>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="very_light_grey">#E5E5E5</color>
+    <color name= "background_colour_grey">#F2F2F2</color>
+    <color name="bg_group_item_normal_state">#FFFF</color>
+    <color name="bg_group_item_normal_pressed_state">#E5E5E5</color>
+    <color name="pastel_yellow">#fdfd96</color>
+    <color name="primaryPresses">#005CA1</color>
+    <color name="primaryFocused">#00a3db</color>
+    <color name="night_blue">#001a33</color>
+    <color name="night_blue_accent">#00264d</color>
+    <color name="night_blue_accent_light">#007fff</color>
+</resources>

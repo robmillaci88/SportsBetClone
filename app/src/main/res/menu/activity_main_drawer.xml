@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_menu_home"
+                android:title="@string/menu_home"/>
+
+        <item
+                android:id="@+id/nav_specials"
+                android:icon="@drawable/dollar_icon"
+                android:title="Specials"/>
+        <item
+                android:id="@+id/nav_racing"
+                android:icon="@drawable/horses_icon"
+                android:title="Racing"/>
+        <item android:title="Sports &amp; Novelties"
+              android:icon="@drawable/sports_and_novel"/>
+        <item android:title="Bet Live" android:icon="@drawable/bet_live"/>
+        <item android:title="Multi Builder" android:icon="@drawable/multi_builder"/>
+        <item android:title="Tipping &amp; Games"
+              android:icon="@drawable/tipping_and_games"/>
+    </group>
+
+    <item android:title="Featured">
+        <menu>
+            <item
+                    android:id="@+id/nav_state"
+                    android:icon="@drawable/nrl_icon"
+                    android:title="State of Origin Game 1"/>
+            <item
+                    android:id="@+id/nav_nba"
+                    android:icon="@drawable/backet_ball"
+                    android:title="NBA Finals Game 2"/>
+            <item android:title="ICC Cricket World Cup" android:icon="@drawable/cricket"/>
+            <item android:title="NRL Matches" android:icon="@drawable/nrl_icon"/>
+            <item android:title="AFL Matches" android:icon="@drawable/afl_icon"/>
+            <item android:title="French Open Mens"
+                  android:icon="@drawable/tennis_icon"/>
+            <item android:title="French Open Ladies"
+                  android:icon="@drawable/tennis_icon"/>
+            <item android:title="FIFA Womens World Cup"
+                  android:icon="@drawable/soccer_icon"/>
+            <item android:title="MLB Matches" android:icon="@drawable/baseball"/>
+            <item android:title="Megabets" android:icon="@drawable/star"/>
+        </menu>
+    </item>
+
+</menu>

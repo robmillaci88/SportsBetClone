@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/betting_coordinator"
+        tools:context=".activities.fragments.home_activity.HomeActivityView">
+
+    <include layout="@layout/content_sports_betting"/>
+    <include layout="@layout/bet_slip_layout"/>
+
+    <include layout="@layout/slide_in_image"
+             android:id="@+id/image_slide"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="30dp"
+             android:layout_gravity="bottom|center"/>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
