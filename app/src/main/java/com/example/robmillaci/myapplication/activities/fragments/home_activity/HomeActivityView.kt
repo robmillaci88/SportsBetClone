@@ -1,6 +1,7 @@
 package com.example.robmillaci.myapplication.activities.fragments.home_activity
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
@@ -15,19 +16,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.robmillaci.myapplication.NavTools
 import com.example.robmillaci.myapplication.R
+import com.example.robmillaci.myapplication.activities.fragments.fragments.HomeFragment
 import com.example.robmillaci.myapplication.adapters.BetSlipAdapter
 import com.example.robmillaci.myapplication.adapters.ViewPagerAdapter
 import com.example.robmillaci.myapplication.extension_functions.pulse
-import com.example.robmillaci.myapplication.activities.fragments.fragments.HomeFragment
 import com.example.robmillaci.myapplication.miscs.CallingType
 import com.example.robmillaci.myapplication.miscs.SpacesItemDecoration
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bet_slip_layout.*
 import kotlinx.android.synthetic.main.collapsable_toolbar.*
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.tab_layout.*
 import java.lang.ref.WeakReference
 
@@ -36,7 +35,7 @@ const val SPORTS_TAB = "Sports"
 const val RACING_TAB = "Racing"
 const val TAB_SELECTED_STATE = "TabSelected"
 const val VIEW_PAGER_UPDATE_RATE = 5000L
-const val BET_SLIP_SHARED_PRED = "betslip"
+const val BET_SLIP_SHARED_PREF = "betslip"
 
 class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, BetSlipDrawerOpened {
 
@@ -47,7 +46,8 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
     private var listener: FragmentCommunication? = null
     private var navigationView: NavigationView? = null
     private var betSlipNavigationView: NavigationView? = null
-    lateinit var mViewModel: HomeActivityViewModel
+    private lateinit var mViewModel: HomeActivityViewModel
+    private lateinit var preferenceManager: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,47 +60,41 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
             this.setDisplayShowTitleEnabled(false)
         }
 
+        preferenceManager = PreferenceManager.getDefaultSharedPreferences(this)
+
         mViewModel = ViewModelProviders.of(this).get(HomeActivityViewModel::class.java)
+        mViewModel.betSlipValue.value = preferenceManager.getInt(BET_SLIP_SHARED_PREF, 0)
 
         navigationView = NavTools(this).configureNavView(this, toolbarMain, nav_view)
         betSlipNavigationView = NavTools(this).configureBetSlipView(this, betSlip_nav_view)
-
-
 
         createFragment()
         createViewPagers()
         createTabListener()
         observeBetSlip()
-        restoreBetSlip()
-
-    }
-
-    private fun restoreBetSlip() {
-        mViewModel.betSlipValue.value = PreferenceManager.getDefaultSharedPreferences(this).getInt(BET_SLIP_SHARED_PRED,0)
     }
 
     @SuppressLint("ApplySharedPref")
     private fun observeBetSlip() {
         mViewModel.betSlipValue.observe(this, Observer {
             findViewById<TextView>(R.id.bet_slip_amount).text = it.toString()
-            if (mViewModel.betSlipValue.value == 0){
+            if (mViewModel.betSlipValue.value == 0) {
                 drawer_layout.closeDrawer(GravityCompat.END)
-                Snackbar.make(main_view,"Bet slip cleared",Snackbar.LENGTH_LONG)
             }
             animateBetSlip()
-            PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(BET_SLIP_SHARED_PRED,it).commit()
+            preferenceManager.edit().putInt(BET_SLIP_SHARED_PREF, it).commit()
         })
 
 
         mViewModel.betSlipItems?.observe(this, Observer {
             try {
                 betSlipNavigationView?.findViewById<RecyclerView>(R.id.betslip_recycler_view)?.apply {
-                        this.adapter = BetSlipAdapter(
-                            WeakReference(context),
-                            it
-                        )
-                        this.layoutManager = LinearLayoutManager(context)
-                        this.addItemDecoration(SpacesItemDecoration(10, CallingType.BET_CALLING_TYPE))
+                    this.adapter = BetSlipAdapter(
+                        WeakReference(context),
+                        it
+                    )
+                    this.layoutManager = LinearLayoutManager(context)
+                    this.addItemDecoration(SpacesItemDecoration(10, CallingType.BET_CALLING_TYPE))
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -121,6 +115,7 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
     override fun onResume() {
         super.onResume()
         tabLayout.getTabAt(PreferenceManager.getDefaultSharedPreferences(this).getInt(TAB_SELECTED_STATE, 1))?.select()
+        mViewModel.betSlipValue.value = preferenceManager.getInt(BET_SLIP_SHARED_PREF, 0)
     }
 
 
@@ -200,7 +195,7 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
 
 
     private fun setTimer() {
-        updateSportsViewPager = Runnable() {
+        updateSportsViewPager = Runnable {
             if (view_pager_sports.currentItem + 1 == view_pager_sports.adapter?.count) {
                 view_pager_sports.currentItem = 0
             } else {
@@ -209,7 +204,7 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
             handler.postDelayed(updateSportsViewPager, VIEW_PAGER_UPDATE_RATE)
         }
 
-        updateRacingViewPager = Runnable() {
+        updateRacingViewPager = Runnable {
             if (view_pager_racing.currentItem + 1 == view_pager_racing.adapter?.count) {
                 view_pager_racing.currentItem = 0
             } else {
@@ -244,18 +239,16 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
         }
     }
 
-    fun setListener(listener: FragmentCommunication) {
+    private fun setListener(listener: FragmentCommunication) {
         this.listener = listener
     }
 
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
-            drawerLayout.closeDrawer(GravityCompat.END)
-        } else {
-            super.onBackPressed()
+        when {
+            drawerLayout.isDrawerOpen(GravityCompat.START) -> drawerLayout.closeDrawer(GravityCompat.START)
+            drawerLayout.isDrawerOpen(GravityCompat.END) -> drawerLayout.closeDrawer(GravityCompat.END)
+            else -> super.onBackPressed()
         }
 
     }
@@ -263,6 +256,7 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
     override fun onOpenBetSlip() {
         mViewModel.getAllBets()
     }
+
 
 }
 

@@ -8,21 +8,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.robmillaci.myapplication.R
-import com.example.robmillaci.myapplication.adapters.SectionDataModel
-import com.example.robmillaci.myapplication.adapters.SportsAdapter
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.FragmentCommunication
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.HomeActivityViewModel
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.SPORTS_TAB
+import com.example.robmillaci.myapplication.adapters.SportsAdapter
 import com.example.robmillaci.myapplication.miscs.CustomLinearLayoutManager
 import kotlinx.android.synthetic.main.loading_progress.*
 import kotlinx.android.synthetic.main.sports_data_fragment.*
 import java.lang.ref.WeakReference
 
 
-class HomeFragment(val listener: ActivityListener) : Fragment(), FragmentCommunication {
-    lateinit var mViewModel: HomeActivityViewModel
-    var sectionData: ArrayList<SectionDataModel>? = ArrayList()
-    lateinit var sAdapter: SportsAdapter
+class HomeFragment(private val listener: ActivityListener) : Fragment(), FragmentCommunication {
+    private lateinit var mViewModel: HomeActivityViewModel
+    private lateinit var sAdapter: SportsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -178,7 +176,6 @@ class HomeFragment(val listener: ActivityListener) : Fragment(), FragmentCommuni
         }
 
     }
-
 
 
     override fun tabSelected(pos: Int) {

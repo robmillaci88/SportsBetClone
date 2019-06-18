@@ -1,8 +1,11 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.robmillaci.myapplication.activities.fragments.betting_activity
 
+import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -16,13 +19,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.robmillaci.myapplication.NavTools
 import com.example.robmillaci.myapplication.R
+import com.example.robmillaci.myapplication.activities.fragments.home_activity.BET_SLIP_SHARED_PREF
+import com.example.robmillaci.myapplication.activities.fragments.home_activity.BetSlipDrawerOpened
+import com.example.robmillaci.myapplication.activities.fragments.home_activity.HomeActivityViewModel
 import com.example.robmillaci.myapplication.adapters.BetSlipAdapter
 import com.example.robmillaci.myapplication.adapters.BetsAdapter
 import com.example.robmillaci.myapplication.extension_functions.pulse
 import com.example.robmillaci.myapplication.extension_functions.translationsSlide
-import com.example.robmillaci.myapplication.activities.fragments.home_activity.BET_SLIP_SHARED_PRED
-import com.example.robmillaci.myapplication.activities.fragments.home_activity.BetSlipDrawerOpened
-import com.example.robmillaci.myapplication.activities.fragments.home_activity.HomeActivityViewModel
 import com.example.robmillaci.myapplication.miscs.CallingType
 import com.example.robmillaci.myapplication.miscs.SpacesItemDecoration
 import com.example.robmillaci.myapplication.pojos.IEventObject
@@ -39,29 +42,33 @@ import kotlinx.android.synthetic.main.content_sports_betting.*
 import java.lang.ref.WeakReference
 
 
-class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, BetsAdapter.IViewbetClickedListener  {
+class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, BetsAdapter.IViewbetClickedListener {
     private var sportsObject: SportsEvent? = null
     private lateinit var recyclerViewItems: MutableList<BetsAdapter.MyGroupItem>
     private lateinit var mSportsBettingViewModel: SportsBettingActivityViewModel
     private lateinit var mHomeActivityViewModel: HomeActivityViewModel
     private var navigationView: NavigationView? = null
     private var betSlipNavigationView: NavigationView? = null
+    private lateinit var preferenceManager: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sports_betting)
 
         supportActionBar?.setDisplayShowTitleEnabled(true)
-        supportActionBar?.setTitle("")
+        supportActionBar?.title = ""
+        preferenceManager = PreferenceManager.getDefaultSharedPreferences(this)
 
-        //todo clean this up - recreating 2 NavTool objects - only one is needed
-        navigationView = NavTools(this).configureNavView(this, toolbarSportsBetting, betSlip_nav_view)
-        betSlipNavigationView = NavTools(this).configureBetSlipView(this, betSlip_nav_view)
+        val navTools = NavTools(this)
+        navigationView = navTools.configureNavView(this, toolbarSportsBetting, betSlip_nav_view)
+        betSlipNavigationView = navTools.configureBetSlipView(this, betSlip_nav_view)
 
         getSportsObject(intent.extras)
 
         mSportsBettingViewModel = ViewModelProviders.of(this).get(SportsBettingActivityViewModel::class.java)
         mHomeActivityViewModel = ViewModelProviders.of(this).get(HomeActivityViewModel::class.java)
+        mHomeActivityViewModel.betSlipValue.value = preferenceManager.getInt(BET_SLIP_SHARED_PREF, 0)
+
 
         createRecyclerViewData()
         createRecyclerView()
@@ -69,11 +76,12 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         createScrollListener()
         createObservers()
 
+        mHomeActivityViewModel.getAllBets()
     }
 
     //todo make a global observer
+    @SuppressLint("ApplySharedPref")
     private fun createObservers() {
-
         mHomeActivityViewModel.betSlipItems?.observe(this, Observer {
             try {
                 betSlipNavigationView?.findViewById<RecyclerView>(R.id.betslip_recycler_view)?.apply {
@@ -85,7 +93,6 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
                     this.addItemDecoration(SpacesItemDecoration(10, CallingType.BET_CALLING_TYPE))
                 }
             } catch (e: Exception) {
-                Log.d("BETSLIP","${e.printStackTrace()}")
                 e.printStackTrace()
             }
         })
@@ -96,10 +103,9 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
                 drawer_layout.closeDrawer(GravityCompat.END)
             }
 
-            //todo combine the two animate betslip methods somehow
             bet_slip.pulse()
             bet_slip_amount.pulse()
-            PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(BET_SLIP_SHARED_PRED, it).commit()
+            preferenceManager.edit().putInt(BET_SLIP_SHARED_PREF, it).commit()
         })
     }
 
@@ -109,7 +115,7 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         var allowedToTranslateIn = true
         val origionalPos = image_slide.top
 
-        betting_scroll_view.setOnScrollChangeListener { v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+        betting_scroll_view.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, oldScrollY: Int ->
             if (oldScrollY < scrollY && allowedToTranslateOut) { //we are scrolling up and so hide the floating view
                 image_slide.translationsSlide(2 * image_slide.width.toFloat(), 0f)
                 allowedToTranslateIn = true
@@ -145,8 +151,7 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
 
 
     private fun addAppbarOffsetListener() {
-        val drawableArrow = resources.getDrawable(android.R.drawable.btn_dropdown)
-        betting_app_bar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { a, verticalOffset ->
+        betting_app_bar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
             val range = (-betting_app_bar.totalScrollRange)
             val alphaToApply = 1 - verticalOffset.toFloat() / range.toFloat()
 
@@ -168,7 +173,7 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         sportsObject = extras?.getSerializable("object") as SportsEvent
         val thisSportsObject = sportsObject
 
-        event_date_time.text = thisSportsObject?.getStartTime()
+        event_date_time.text = thisSportsObject?.startTime
 
 
         //Fake data into the spinner drop down list
@@ -186,25 +191,26 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
     }
 
     override fun onOpenBetSlip() {
-        Log.d("BETSLIP","betslip opened")
         mHomeActivityViewModel.getAllBets()
     }
 
-    override fun betClicked(view: View, eventObject: IEventObject) {
+    override fun betClicked(view: View, eventObject: IEventObject, betName: String) {
         if (view.tag != getString(R.string.clicked_button)) {
             view.setBackgroundResource(R.drawable.ripple_button_blue_pressed)
             odds_tv.setTextColor(resources.getColor(android.R.color.white))
-            view.setTag(getString(R.string.clicked_button))
+            view.tag = getString(R.string.clicked_button)
 
-            eventObject.setchosenOdds(odds_tv.text.toString())
-            eventObject.setChosenOutcome(child_tv.text.toString())
+
+            eventObject.chosenOdds = odds_tv.text.toString()
+            eventObject.chosenOutcomes = child_tv.text.toString()
+            eventObject.betName = betName
 
             mHomeActivityViewModel.updateBetSlip(eventObject, 0, true)
 
         } else {
             view.setBackgroundResource(R.drawable.ripple_button_blue)
             view.findViewById<TextView>(R.id.odds_tv).setTextColor(resources.getColor(android.R.color.black))
-            view.setTag(getString(R.string.unclicked_button))
+            view.tag = getString(R.string.unclicked_button)
             mHomeActivityViewModel.updateBetSlip(eventObject, 0, false)
         }
     }

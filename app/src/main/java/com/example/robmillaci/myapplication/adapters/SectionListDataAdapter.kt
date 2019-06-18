@@ -1,7 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.robmillaci.myapplication.adapters
 
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -37,7 +38,6 @@ class SectionListDataAdapter(
 ) : RecyclerView.Adapter<SectionListDataAdapter.MyViewHolder>(), ItimerCommunication {
 
 
-    @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val dataType = itemList[0].eventObject.getEventType()
         val mainEvent = itemList[0].eventObject.isMainEvent()
@@ -46,8 +46,6 @@ class SectionListDataAdapter(
 
     }
 
-
-    @Suppress("DEPRECATION")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val event = itemList[position].eventObject
@@ -58,7 +56,7 @@ class SectionListDataAdapter(
                 holder as MyViewHolderSports
                 holder.tournament?.text = sportsObject.tournament
                 holder.game?.text = sportsObject.gameName
-                holder.dateTime?.text = sportsObject.getStartTime()
+                holder.dateTime?.text = sportsObject.startTime
             }
 
             event.getEventType() == EventType.SPORTS && event.isMainEvent() -> {
@@ -67,8 +65,8 @@ class SectionListDataAdapter(
                 holder.homeButtonText?.text = mainEventObject.gameName.split(" v ")[0]
                 holder.awayButtonText?.text = mainEventObject.gameName.split(" v ")[1]
 
-                holder.mainEventButtonOne?.setOnClickListener { mainEventOnClick(it, mainEventObject,position) }
-                holder.mainEventButtonTwo?.setOnClickListener { mainEventOnClick(it, mainEventObject,position) }
+                holder.mainEventButtonOne?.setOnClickListener { mainEventOnClick(it, mainEventObject, position) }
+                holder.mainEventButtonTwo?.setOnClickListener { mainEventOnClick(it, mainEventObject, position) }
 
 
                 holder.mainEventGame?.text = mainEventObject.gameName
@@ -81,16 +79,16 @@ class SectionListDataAdapter(
                 holder as MyViewHolderRace
                 holder.place?.text = racingObject.raceLocation
                 holder.race?.text = racingObject.raceName
-                holder.dateTime?.text = racingObject.getStartTime()
+                holder.dateTime?.text = racingObject.startTime
             }
         }
 
         val iconDrawable = holder.icon?.determineImageDrawable(weakContext, event.getSpecificTypes())
         holder.icon?.setImageDrawable(iconDrawable)
 
-        val diff = Duration.between(LocalDateTime.now(), event.getStartTime().gimmeDateTime())
-        val startTime = event.getStartTime().gimmeDateTime()
-        val endTime = event.getEndTime().gimmeDateTime()
+        val diff = Duration.between(LocalDateTime.now(), event.startTime.gimmeDateTime())
+        val startTime = event.startTime.gimmeDateTime()
+        val endTime = event.endTime.gimmeDateTime()
 
         if (startTime.dayOfYear <= LocalDateTime.now().dayOfYear + 1 && startTime.hour - LocalDateTime.now().hour <= 24) {
             when {
@@ -116,10 +114,10 @@ class SectionListDataAdapter(
     }
 
 
-    private fun mainEventOnClick(view: View, eventObject: SportsEvent, position : Int) {
-        if (view.tag == "unClicked") {
+    private fun mainEventOnClick(view: View, eventObject: SportsEvent, position: Int) {
+        if (view.tag == weakContext.get()?.getString(R.string.unclicked_button)) {
             view.setBackgroundResource(R.drawable.ripple_button_blue_pressed)
-            view.tag = "clicked"
+            view.tag = weakContext.get()?.getString(R.string.clicked_button)
             (view as ViewGroup).children.forEach {
                 if (it is TextView) {
                     it.setTextColor(weakContext.get()?.resources?.getColor(android.R.color.white)!!)
@@ -127,14 +125,15 @@ class SectionListDataAdapter(
                         eventObject.chosenOdds = it.text.toString()
                     }
                     if (it.id == R.id.home_button_txt || it.id == R.id.away_button_txt) {
-                        eventObject.setChosenOutcome(it.text.toString())
+                        eventObject.chosenOutcomes = it.text.toString()
                     }
                 }
             }
-            adapterCallback.betItemClicked(eventObject,position, true)
+            eventObject.betName = "Head to head"
+            adapterCallback.betItemClicked(eventObject, position, true)
         } else {
             view.setBackgroundResource(R.drawable.ripple_button_blue)
-            view.tag = "unClicked"
+            view.tag = weakContext.get()?.getString(R.string.unclicked_button)
             (view as ViewGroup).children.forEach {
                 if (it is TextView) {
                     it.setTextColor(weakContext.get()?.resources?.getColor(android.R.color.black)!!)
@@ -196,6 +195,6 @@ interface ItimerCommunication {
 }
 
 interface IadapterCallback {
-    fun betItemClicked(eventObject: IEventObject, position : Int , add: Boolean)
+    fun betItemClicked(eventObject: IEventObject, position: Int, add: Boolean)
 }
 

@@ -14,16 +14,21 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemAda
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemViewHolder
 import kotlinx.android.synthetic.main.bet_type_recycler_view.view.*
 
-internal class BetsAdapter(groupItems : List<MyGroupItem>, val itemDecoration : RecyclerView.ItemDecoration,val viewBetClickedListener : IViewbetClickedListener) :
-    AbstractExpandableItemAdapter<BetsAdapter.MyGroupViewHolder, BetsAdapter.MyChildViewHolder>(){
-    var mItems: List<MyGroupItem>? = groupItems
-    var recyclerView : RecyclerView? = null
+internal class BetsAdapter(
+    groupItems: List<MyGroupItem>, private val itemDecoration: RecyclerView.ItemDecoration,
+    private val viewBetClickedListener: IViewbetClickedListener
+) :
+    AbstractExpandableItemAdapter<BetsAdapter.MyGroupViewHolder, BetsAdapter.MyChildViewHolder>() {
+
+    private var mItems: List<MyGroupItem>? = groupItems
+    private var recyclerView: RecyclerView? = null
+
     init {
         setHasStableIds(true)
     }
 
-    override fun onCreateGroupViewHolder(parent: ViewGroup?, viewType: Int): BetsAdapter.MyGroupViewHolder {
-        return MyGroupViewHolder(R.layout.bet_type_recycler_view.inflate(parent?.context!!,parent))
+    override fun onCreateGroupViewHolder(parent: ViewGroup?, viewType: Int): MyGroupViewHolder {
+        return MyGroupViewHolder(R.layout.bet_type_recycler_view.inflate(parent?.context!!, parent))
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -31,12 +36,12 @@ internal class BetsAdapter(groupItems : List<MyGroupItem>, val itemDecoration : 
         this.recyclerView = recyclerView
     }
 
-    override fun onCreateChildViewHolder(parent: ViewGroup?, viewType: Int): BetsAdapter.MyChildViewHolder {
-        return MyChildViewHolder(R.layout.bet_type_children_view.inflate(parent?.context!!,parent))
+    override fun onCreateChildViewHolder(parent: ViewGroup?, viewType: Int): MyChildViewHolder {
+        return MyChildViewHolder(R.layout.bet_type_children_view.inflate(parent?.context!!, parent))
     }
 
     override fun onBindGroupViewHolder(
-        holder: BetsAdapter.MyGroupViewHolder,
+        holder: MyGroupViewHolder,
         groupPosition: Int,
         viewType: Int
     ) {
@@ -45,22 +50,23 @@ internal class BetsAdapter(groupItems : List<MyGroupItem>, val itemDecoration : 
     }
 
     override fun onBindChildViewHolder(
-        holder: BetsAdapter.MyChildViewHolder,
+        holder: MyChildViewHolder,
         groupPosition: Int,
         childPosition: Int,
         viewType: Int
     ) {
-        val child = mItems?.get(groupPosition)?.children!![childPosition]
+        val parent = mItems?.get(groupPosition)
+        val child = parent?.children!![childPosition]
         holder.textView.text = child.text
         holder.oddsTv.text = child.odds.toString()
         holder.bet_button.setOnClickListener {
-            val thisEventObject = mItems?.get(groupPosition)!!.thisEvent
-            viewBetClickedListener.betClicked(holder.bet_button,thisEventObject)
+            val thisEventObject = parent.thisEvent
+            viewBetClickedListener.betClicked(holder.bet_button, thisEventObject, parent.text)
         }
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {
-        return mItems?.get(groupPosition)?.children?.get(childPosition)?.id!!;
+        return mItems?.get(groupPosition)?.children?.get(childPosition)?.id!!
     }
 
     override fun getGroupId(groupPosition: Int): Long {
@@ -70,50 +76,53 @@ internal class BetsAdapter(groupItems : List<MyGroupItem>, val itemDecoration : 
     override fun getChildCount(groupPosition: Int): Int {
         return mItems?.get(groupPosition)?.children?.size ?: 0
     }
+
     override fun getGroupCount(): Int {
         return mItems?.size ?: 0
     }
 
     override fun onCheckCanExpandOrCollapseGroup(
-        holder: BetsAdapter.MyGroupViewHolder,
+        holder: MyGroupViewHolder,
         groupPosition: Int,
         x: Int,
         y: Int,
         expand: Boolean
     ): Boolean {
 
-        if(expand) {
+        if (expand) {
             recyclerView?.removeItemDecoration(itemDecoration)
-        }else {
+        } else {
             recyclerView?.addItemDecoration(itemDecoration)
         }
         return true
     }
 
 
-interface IViewbetClickedListener{
-    fun betClicked(view : View, eventObject : IEventObject)
-}
-
-internal abstract class MyBaseItem(val id: Long, val text: String)
-internal class MyGroupItem(id: Long, text: String, eventObject: IEventObject) : MyBaseItem(id, text) {
-    val children: List<MyChildItem>  = mutableListOf<MyChildItem>()
-    val thisEvent = eventObject
-}
-internal class MyChildItem(id: Long, text: String, val odds : Double) : MyBaseItem(id, text)
-internal abstract class MyBaseViewHolder(itemView: View) : AbstractExpandableItemViewHolder(itemView)
-
-
-internal class MyGroupViewHolder(itemView: View) : MyBaseViewHolder(itemView){
-    var textView = itemView.findViewById<TextView>(R.id.group_textView)
-    val mContainer = itemView.findViewById<FrameLayout>(R.id.container).setOnClickListener {
-       rotateTheView(itemView.parent_down_expansion,itemView)
+    interface IViewbetClickedListener {
+        fun betClicked(view: View, eventObject: IEventObject, betName: String)
     }
-}
 
-internal class MyChildViewHolder(itemView: View) : MyBaseViewHolder(itemView){
-    var textView = itemView.findViewById<TextView>(R.id.child_tv)
-    var oddsTv = itemView.findViewById<TextView>(R.id.odds_tv)
-    var bet_button = itemView.findViewById<LinearLayout>(R.id.bet_button)
-}
+    internal abstract class MyBaseItem(val id: Long, val text: String)
+
+    internal class MyGroupItem(id: Long, text: String, eventObject: IEventObject) : MyBaseItem(id, text) {
+        val children: List<MyChildItem> = mutableListOf()
+        val thisEvent = eventObject
+    }
+
+    internal class MyChildItem(id: Long, text: String, val odds: Double) : MyBaseItem(id, text)
+
+    internal abstract class MyBaseViewHolder(itemView: View) : AbstractExpandableItemViewHolder(itemView)
+
+    internal class MyGroupViewHolder(itemView: View) : MyBaseViewHolder(itemView) {
+        var textView = itemView.findViewById<TextView>(R.id.group_textView)
+        val mContainer = itemView.findViewById<FrameLayout>(R.id.container).setOnClickListener {
+            rotateTheView(itemView.parent_down_expansion, itemView)
+        }
+    }
+
+    internal class MyChildViewHolder(itemView: View) : MyBaseViewHolder(itemView) {
+        var textView: TextView = itemView.findViewById(R.id.child_tv)
+        var oddsTv: TextView = itemView.findViewById(R.id.odds_tv)
+        var bet_button: LinearLayout = itemView.findViewById(R.id.bet_button)
+    }
 }

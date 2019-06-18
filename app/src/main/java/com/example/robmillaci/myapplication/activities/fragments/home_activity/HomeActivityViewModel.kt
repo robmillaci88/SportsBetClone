@@ -34,14 +34,14 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
 
 
     private  var dbUpdateObserver  =  object : CompletableObserver {
+
         override fun onComplete() {
-            Log.d("OBSERVING","DB UPDATE OBSERVER CALLED")
             betSlipValue.value = betSlipItems?.value?.size
         }
         override fun onSubscribe(d: Disposable) {
         }
         override fun onError(e: Throwable) {
-            Log.d("OBSERVING","DB UPDATE OBSERVER ERROR ${e.localizedMessage}")
+            e.printStackTrace()
         }
     }
 
@@ -100,7 +100,7 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
     }
 
 
-    fun createDatabase(): AppDatabase {
+    private fun createDatabase(): AppDatabase {
         database = AppDatabase.getAppDataBase(getApplication<Application>().applicationContext)
 
         sportsDao = database?.getSportsDao()
@@ -129,8 +129,7 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
                 }
 
                 override fun onError(e: Throwable) {
-                    Log.d("GETRACGINDATA","data is errored ${e.printStackTrace()}")
-
+                e.printStackTrace()
                 }
             })
     }

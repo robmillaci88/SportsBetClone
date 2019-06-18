@@ -25,8 +25,21 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
+    kapt {
+        generateStubs = true
+        correctErrorTypes = true
+    }
+
     sourceSets {
         main {
+            java {
+                srcDir "${buildDir}/generated/source/kapt/main"
+            }
+
             res.srcDirs =
                     [
                             'src/main/res/layouts/home_activity_layouts',
@@ -34,7 +47,6 @@ android {
                             'src/main/res/layouts',
                             'src/main/res'
                     ]
-
         }
     }
 }

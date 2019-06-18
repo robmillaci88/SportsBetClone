@@ -4,6 +4,7 @@ package com.example.robmillaci.myapplication.adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -30,6 +31,7 @@ class SportsAdapter(
     var mViewModel: HomeActivityViewModel? = null
 
     override fun betItemClicked(eventObject: IEventObject,position : Int , add: Boolean) {
+        Log.d("CLICKKKK","bet item clicked called")
         if (add) {
             mViewModel?.updateBetSlip(eventObject, position,true)
         } else {

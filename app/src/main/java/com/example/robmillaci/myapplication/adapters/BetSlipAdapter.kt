@@ -1,7 +1,7 @@
 package com.example.robmillaci.myapplication.adapters
 
 import android.content.Context
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,11 +9,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.robmillaci.myapplication.R
-import com.example.robmillaci.myapplication.extension_functions.determineImageDrawable
-import com.example.robmillaci.myapplication.extension_functions.inflate
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.HomeActivityViewModel
+import com.example.robmillaci.myapplication.databinding.BetSlipEventBinding
+import com.example.robmillaci.myapplication.extension_functions.determineImageDrawable
 import com.example.robmillaci.myapplication.pojos.IEventObject
-import com.example.robmillaci.myapplication.pojos.SportsEvent
 import java.lang.ref.WeakReference
 
 class BetSlipAdapter(val weakContext: WeakReference<Context>, val items: ArrayList<IEventObject>?) :
@@ -23,12 +22,8 @@ class BetSlipAdapter(val weakContext: WeakReference<Context>, val items: ArrayLi
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyBetSlipViewHolder {
-        return MyBetSlipViewHolder(
-            R.layout.bet_slip_event.inflate(
-                weakContext.get(),
-                parent
-            )
-        )
+        val inflater = LayoutInflater.from(parent.context)
+        return MyBetSlipViewHolder(BetSlipEventBinding.inflate(inflater,parent,false))
     }
 
     override fun getItemCount(): Int {
@@ -36,39 +31,36 @@ class BetSlipAdapter(val weakContext: WeakReference<Context>, val items: ArrayLi
     }
 
     override fun onBindViewHolder(holder: MyBetSlipViewHolder, position: Int) {
-        val eventObject = items?.get(position)
-        if (eventObject is SportsEvent) {
-            holder.bet_icon.setImageDrawable(
-                holder.bet_icon.determineImageDrawable(
-                    weakContext,
-                    eventObject.getSpecificTypes()
-                )
-            )
-            holder.bet_type.text = weakContext.get()?.getString(R.string.win_or_place_string)
-            holder.eventName.text = eventObject.gameName
-            holder.betOdds.text = eventObject.chosenOdds
-            holder.bet_chosen_team.text = eventObject.getChosenOutcome()
-            holder.entryNumber.text = holder.adapterPosition.toString()
+        items?.get(position)?.let { holder.bind(it) }
 
-            holder.deleteBet.setOnClickListener {
-                val itemToRemove = items?.get(holder.adapterPosition)
-                if (itemToRemove != null) {
-                    mViewModel.updateBetSlip(itemToRemove, holder.adapterPosition, false)
-                    notifyItemRemoved(holder.adapterPosition);
-                }
-            }
+        holder.bet_icon.setImageDrawable(
+            holder.bet_icon.determineImageDrawable(
+                weakContext,
+                items?.get(position)?.getSpecificTypes()!!
+            )
+        )
+
+        holder.entryNumber.text = (holder.adapterPosition + 1).toString()
+
+        holder.deleteBet.setOnClickListener {
+            val itemToRemove = items.get(holder.adapterPosition)
+            mViewModel.updateBetSlip(itemToRemove, holder.adapterPosition, false)
+            notifyItemRemoved(holder.adapterPosition);
         }
     }
 
-    class MyBetSlipViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val bet_icon = v.findViewById<ImageView>(R.id.betslip_entry_icon)
-        val bet_type: TextView = v.findViewById(R.id.bet_type)
-        val bet_chosen_team: TextView = v.findViewById(R.id.bet_chosen_team)
-        val eventName: TextView = v.findViewById(R.id.event_name)
-        val entryNumber: TextView = v.findViewById(R.id.entry_number)
-        val betOdds: TextView = v.findViewById(R.id.bet_odds)
-        val potentialReturns: TextView = v.findViewById(R.id.potential_returns)
-        val deleteBet: ImageView = v.findViewById(R.id.delete_bet)
+
+    class MyBetSlipViewHolder(val itemBinding: BetSlipEventBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+        fun bind(items: IEventObject) {
+            itemBinding.item = items
+            itemBinding.executePendingBindings()
+        }
+
+        val bet_icon : ImageView = itemBinding.root.findViewById(R.id.betslip_entry_icon)
+        val entryNumber: TextView = itemBinding.root.findViewById(R.id.entry_number)
+        val deleteBet: ImageView = itemBinding.root.findViewById(R.id.delete_bet)
     }
+
+
 }
 

@@ -7,43 +7,20 @@ import androidx.room.PrimaryKey
 class RacingEvent(
     @PrimaryKey(autoGenerate = true) var id : Int,
     var specificType: SpecificTypes,
-    val raceLocation: String,
-    val raceName: String,
-    private val startTime: String,
-    private val endTime: String,
-    val type : String = "RacingEvent"
+    var raceLocation: String,
+    var raceName: String,
+    override var startTime: String,
+    override var endTime: String,
+    var type : String = "RacingEvent"
 ) : IEventObject {
 
-    var chosenOutcomes = ""
-    var chosenOdds = ""
 
-    override fun getchosenOdds(): String {
-        return chosenOdds
-    }
-
-    override fun setchosenOdds(odds: String) {
-        this.chosenOdds = odds
-    }
-
-
-    override fun getChosenOutcome(): String {
-        return chosenOutcomes
-    }
-
-    override fun setChosenOutcome(team : String) {
-       this.chosenOutcomes = team
-    }
+    override var betName: String? = ""
+    override  var chosenOutcomes = ""
+    override var chosenOdds = ""
 
     override fun isMainEvent(): Boolean {
         return false
-    }
-
-    override fun getEndTime(): String {
-        return endTime
-    }
-
-    override fun getStartTime(): String {
-        return startTime
     }
 
     override fun getSpecificTypes(): SpecificTypes {
@@ -53,7 +30,5 @@ class RacingEvent(
     override fun getEventType(): EventType {
         return EventType.RACING
     }
-
-
 
 }

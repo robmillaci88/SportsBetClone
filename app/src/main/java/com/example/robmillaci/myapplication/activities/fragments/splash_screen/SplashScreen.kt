@@ -25,7 +25,7 @@ class SplashScreen : AppCompatActivity() {
     }
 
     //close the splash screen and launch Home activity after a specific delay
-    private val closeSplashScreen = Handler().postDelayed(Runnable {
+    private val closeSplashScreen = Handler().postDelayed({
         startActivity(Intent(this, HomeActivityView::class.java))
         this.finish()
     }, SPLASH_TIME)
@@ -42,6 +42,6 @@ class SplashScreen : AppCompatActivity() {
 
     companion object {
         //For how long to display the splash screen
-        private val SPLASH_TIME = 1000L
+        private const val SPLASH_TIME = 1000L
     }
 }
