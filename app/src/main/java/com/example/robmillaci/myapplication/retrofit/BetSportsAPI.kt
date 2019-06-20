@@ -9,10 +9,10 @@ const val BASE_URL = "http://www.mocky.io/v2/"
 //Mock JSON HTTP responses
 
 interface BetSportsAPI {
-    @GET("5d01ea5e3100005e00ab2a7d")
+    @GET("5d0adabe2f00002d00e3ed15")
     fun getSportsData(): Single<ArrayList<SectionDataModel>>
 
-    @GET("5d04dd6d320000b63fd74a39")
+    @GET("5d0add1e2f00000d00e3ed19")
     fun getRacingData(): Single<ArrayList<SectionDataModel>>
 }
 
