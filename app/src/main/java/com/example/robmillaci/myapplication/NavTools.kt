@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.BetSlipDrawerOpened
 import com.google.android.material.navigation.NavigationView
 
+
 open class NavTools(val drawerOpenedListener: BetSlipDrawerOpened) : NavigationView.OnNavigationItemSelectedListener {
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         return true

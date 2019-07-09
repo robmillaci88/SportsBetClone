@@ -14,6 +14,9 @@ import com.google.gson.JsonSerializationContext
 
 const val CLASS_PATH_NAME = "com.example.robmillaci.myapplication.pojos."
 
+/**
+ * Custom GSON interface adapter in order to serialize our JSON into Sports and Racing objects from the corresponding IEventObject interface
+ */
 class InterfaceAdapter<T : Any> : JsonSerializer<T>, JsonDeserializer<T> {
     override fun serialize(obj: T, interfaceType: Type, context: JsonSerializationContext): JsonElement {
         val wrapper = JsonObject().apply {
@@ -26,13 +29,11 @@ class InterfaceAdapter<T : Any> : JsonSerializer<T>, JsonDeserializer<T> {
     @Throws(JsonParseException::class)
     override fun deserialize(elem: JsonElement, interfaceType: Type, context: JsonDeserializationContext): T {
         val wrapper = elem as JsonObject
-        Log.d("Wrapper",wrapper.toString())
-        val typeName = get(wrapper, "type")
-        Log.d("Wrapper",typeName.toString())
+        val typeName = get(wrapper, "type") //Retrieve the type of object the JSON data is related to (Sports event / racing event)
 
-        val actualType = typeForName(typeName)
+        val actualType = typeForName(typeName) //Return the actual class represented by the typeName
 
-        return context.deserialize(wrapper, actualType)
+        return context.deserialize(wrapper, actualType) //deserialize the wrapper data into the actual type (Sports/Racing)
     }
 
     private fun typeForName(typeElem: JsonElement): Type {

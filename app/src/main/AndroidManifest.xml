@@ -35,7 +35,7 @@
                 android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".NavTools"/>
+
 
     </application>
 

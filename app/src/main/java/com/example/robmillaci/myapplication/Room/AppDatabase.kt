@@ -5,6 +5,9 @@ import androidx.room.*
 import com.example.robmillaci.myapplication.pojos.RacingEvent
 import com.example.robmillaci.myapplication.pojos.SportsEvent
 
+/**
+ * Our ROOM db implementation as a singleton. Includes all relevant DAO's
+ */
 @Database(entities = [SportsEvent::class, RacingEvent::class], version = 1)
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {

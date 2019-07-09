@@ -11,16 +11,19 @@ import com.example.robmillaci.myapplication.R
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.FragmentCommunication
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.HomeActivityViewModel
 import com.example.robmillaci.myapplication.activities.fragments.home_activity.SPORTS_TAB
-import com.example.robmillaci.myapplication.adapters.SportsAdapter
+import com.example.robmillaci.myapplication.adapters.EventAdapter
 import com.example.robmillaci.myapplication.miscs.CustomLinearLayoutManager
 import kotlinx.android.synthetic.main.loading_progress.*
 import kotlinx.android.synthetic.main.sports_data_fragment.*
 import java.lang.ref.WeakReference
 
-
+/**
+ * The home fragment displaying recyclerview data for either sports or racing events
+ * @param listener - the activity this fragment is attached to in order to communicate between
+ */
 class HomeFragment(private val listener: ActivityListener) : Fragment(), FragmentCommunication {
-    private lateinit var mViewModel: HomeActivityViewModel
-    private lateinit var sAdapter: SportsAdapter
+    private lateinit var mViewModel: HomeActivityViewModel //the view model associated with this fragment/view
+    private lateinit var sAdapter: EventAdapter //the adapter to populate the recyclerview with sports or racing data
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +38,11 @@ class HomeFragment(private val listener: ActivityListener) : Fragment(), Fragmen
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProviders.of(this.activity!!).get(HomeActivityViewModel::class.java)
 
-        sAdapter = SportsAdapter(WeakReference(context!!), mViewModel.sectionDataSports)
+        sAdapter = EventAdapter(WeakReference(context!!), mViewModel.sectionDataSports)
 
+        /*
+        Observe the sports data within the view model for changes, updating the adapter with any changes when they occur
+         */
         mViewModel.sectionDataSports.observe(this, Observer {
             sports_loading_progress_view.visibility = View.GONE
             recyclerViewData.visibility = View.VISIBLE
@@ -44,6 +50,10 @@ class HomeFragment(private val listener: ActivityListener) : Fragment(), Fragmen
             sAdapter.notifyDataSetChanged()
         })
 
+
+        /*
+        Observe the racing data within the view model for changes, updating the adapter with any changes when they occur
+        */
         mViewModel.sectionDataRacing.observe(this, Observer {
             sports_loading_progress_view.visibility = View.GONE
             recyclerViewData.visibility = View.VISIBLE
@@ -52,7 +62,8 @@ class HomeFragment(private val listener: ActivityListener) : Fragment(), Fragmen
         })
 
 
-        lifecycle.addObserver(mViewModel)
+//        lifecycle.addObserver(mViewModel)
+
 
         recyclerViewData.apply {
             this.layoutManager = CustomLinearLayoutManager(context)
@@ -61,10 +72,20 @@ class HomeFragment(private val listener: ActivityListener) : Fragment(), Fragmen
         }
 
         recyclerViewData.itemAnimator?.changeDuration = 0
+
+        /*
+        tell the activity to initially display the viewpager items for sports data. The subsequent on click tab events related to viewpager updates
+        are handled by the home activity hosting the viewpager
+         */
         listener.updateViewPager(SPORTS_TAB)
     }
 
 
+    /**
+     *  Method called when the sports tab is clicked. This displays loading progress bars if the viewmodel doesn't currently hold any sports data.
+     *  If the data already exists, loading is not shown and the data is displayed straight away while also fetching the latest data.
+     *  This method also updates the home icons
+     */
     private fun createSportsRecyclerViewsData() {
         if (mViewModel.sectionDataSports.value == null) {
             showSportsLoading()
@@ -76,6 +97,11 @@ class HomeFragment(private val listener: ActivityListener) : Fragment(), Fragmen
     }
 
 
+    /**
+     *  Method called when the racing tab is clicked. This displays loading progress bars if the viewmodel doesn't currently hold any racing data.
+     *  If the data already exists, loading is not shown and the data is displayed straight away while also fetching the latest data.
+     *  This method also updates the home icons
+     */
     private fun createRacingRecyclerViewsData() {
         if (mViewModel.sectionDataRacing.value == null) {
             showRacingLoading()
@@ -87,6 +113,9 @@ class HomeFragment(private val listener: ActivityListener) : Fragment(), Fragmen
 
     }
 
+    /**
+     * Displays and updates relevant 'loading' views for loading sports data
+     */
     private fun showSportsLoading() {
         sports_loading_progress_view.visibility = View.VISIBLE
         recyclerViewData.visibility = View.GONE
@@ -95,6 +124,10 @@ class HomeFragment(private val listener: ActivityListener) : Fragment(), Fragmen
 
     }
 
+
+    /**
+     * Displays and updates relevant 'loading' views for loading racing data
+     */
     private fun showRacingLoading() {
         sports_loading_progress_view.visibility = View.VISIBLE
         recyclerViewData.visibility = View.GONE

@@ -41,15 +41,17 @@ import kotlinx.android.synthetic.main.collapsable_toolbar_sports_betting.*
 import kotlinx.android.synthetic.main.content_sports_betting.*
 import java.lang.ref.WeakReference
 
-
+/**
+ * The view class for a specific sports betting activity
+ */
 class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, BetsAdapter.IViewbetClickedListener {
-    private var sportsObject: SportsEvent? = null
-    private lateinit var recyclerViewItems: MutableList<BetsAdapter.MyGroupItem>
-    private lateinit var mSportsBettingViewModel: SportsBettingActivityViewModel
-    private lateinit var mHomeActivityViewModel: HomeActivityViewModel
-    private var navigationView: NavigationView? = null
-    private var betSlipNavigationView: NavigationView? = null
-    private lateinit var preferenceManager: SharedPreferences
+    private var sportsObject: SportsEvent? = null //the specific sports betting object
+    private lateinit var recyclerViewItems: MutableList<BetsAdapter.MyGroupItem> //recyclew view to display the types of bets
+    private lateinit var mSportsBettingViewModel: SportsBettingActivityViewModel //the view model for this view
+    private lateinit var mHomeActivityViewModel: HomeActivityViewModel //the home activity view model
+    private var navigationView: NavigationView? = null //the main navigation view across all activities
+    private var betSlipNavigationView: NavigationView? = null //the bet split navigation view across all activities
+    private lateinit var preferenceManager: SharedPreferences //Shared preferences instance
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,12 +61,24 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         supportActionBar?.title = ""
         preferenceManager = PreferenceManager.getDefaultSharedPreferences(this)
 
+        /*
+        Create the navigation views for this activity
+         */
         val navTools = NavTools(this)
         navigationView = navTools.configureNavView(this, toolbarSportsBetting, betSlip_nav_view)
         betSlipNavigationView = navTools.configureBetSlipView(this, betSlip_nav_view)
 
+
+        /*
+        Get the sports object passed into this activity - This is the event on which all bets will be placed
+         */
         getSportsObject(intent.extras)
 
+
+
+        /*
+        Create the viewmodels associated with this activity, also restore the bet slip value
+         */
         mSportsBettingViewModel = ViewModelProviders.of(this).get(SportsBettingActivityViewModel::class.java)
         mHomeActivityViewModel = ViewModelProviders.of(this).get(HomeActivityViewModel::class.java)
         mHomeActivityViewModel.betSlipValue.value = preferenceManager.getInt(BET_SLIP_SHARED_PREF, 0)
@@ -76,10 +90,18 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         createScrollListener()
         createObservers()
 
+        /*
+        Return all bets that a user has previously added to the bet slip - This wouldnt be saved in the real application due to
+        the fact that bets can expire / change but for demo purposes we have saved the users previously added bets
+         */
         mHomeActivityViewModel.getAllBets()
     }
 
-    //todo make a global observer
+
+    /*
+    Create observers to observe the betslip items which recreate the recyclerview when new bets are added
+    Also observe the number of bets added to the bet slip in order to provide UI animation when adding a bet and updating shared preferences
+     */
     @SuppressLint("ApplySharedPref")
     private fun createObservers() {
         mHomeActivityViewModel.betSlipItems?.observe(this, Observer {
@@ -110,6 +132,11 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
     }
 
 
+
+    /*
+    Scroll listener to show/hide the bottom "Same game multi" bar.
+    //todo this needs work!
+     */
     private fun createScrollListener() {
         var allowedToTranslateOut = false
         var allowedToTranslateIn = true
@@ -131,6 +158,9 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
     }
 
 
+    /*
+    Display the dummy betting items
+     */
     private fun createRecyclerView() {
         val expMgr = RecyclerViewExpandableItemManager(null)
         val decorator = SpacesItemDecoration(10, CallingType.BET_CALLING_TYPE)
@@ -145,11 +175,18 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
     }
 
 
+    /*
+    Creates dummy data to display for this activity. Real world data would likely come from a JSON feed from a separate integrated system
+     */
     private fun createRecyclerViewData() {
         if (sportsObject != null) recyclerViewItems = mSportsBettingViewModel.getDummyData(sportsObject!!)
     }
 
 
+    /*
+    Apply alpha property to the spinner (slowly transition to invisible) when the screen is scrolled
+    This is for a nice UI/UX effect
+     */
     private fun addAppbarOffsetListener() {
         betting_app_bar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
             val range = (-betting_app_bar.totalScrollRange)
@@ -169,12 +206,14 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
     }
 
 
+    /**
+     * Get the sports object passed into the bundle when creating this activity
+     */
     private fun getSportsObject(extras: Bundle?) {
         sportsObject = extras?.getSerializable("object") as SportsEvent
         val thisSportsObject = sportsObject
 
         event_date_time.text = thisSportsObject?.startTime
-
 
         //Fake data into the spinner drop down list
         val spinnerArrayAdapter = ArrayAdapter<String>(
@@ -194,6 +233,9 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         mHomeActivityViewModel.getAllBets()
     }
 
+    /**
+     * On Click event when a betting item is clicked
+     */
     override fun betClicked(view: View, eventObject: IEventObject, betName: String) {
         if (view.tag != getString(R.string.clicked_button)) {
             view.setBackgroundResource(R.drawable.ripple_button_blue_pressed)

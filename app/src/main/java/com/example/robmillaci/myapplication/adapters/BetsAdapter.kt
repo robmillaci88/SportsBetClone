@@ -14,10 +14,12 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemAda
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemViewHolder
 import kotlinx.android.synthetic.main.bet_type_recycler_view.view.*
 
-internal class BetsAdapter(
-    groupItems: List<MyGroupItem>, private val itemDecoration: RecyclerView.ItemDecoration,
-    private val viewBetClickedListener: IViewbetClickedListener
-) :
+/**
+ * The adapter for the different types of bets that can be chosen within the Sports betting activity
+ * uses 3rd party library sectionedrecyclerviewadapter
+ */
+internal class BetsAdapter(groupItems: List<MyGroupItem>, private val itemDecoration: RecyclerView.ItemDecoration,
+    private val viewBetClickedListener: IViewbetClickedListener) :
     AbstractExpandableItemAdapter<BetsAdapter.MyGroupViewHolder, BetsAdapter.MyChildViewHolder>() {
 
     private var mItems: List<MyGroupItem>? = groupItems
@@ -57,8 +59,10 @@ internal class BetsAdapter(
     ) {
         val parent = mItems?.get(groupPosition)
         val child = parent?.children!![childPosition]
+
         holder.textView.text = child.text
         holder.oddsTv.text = child.odds.toString()
+
         holder.bet_button.setOnClickListener {
             val thisEventObject = parent.thisEvent
             viewBetClickedListener.betClicked(holder.bet_button, thisEventObject, parent.text)

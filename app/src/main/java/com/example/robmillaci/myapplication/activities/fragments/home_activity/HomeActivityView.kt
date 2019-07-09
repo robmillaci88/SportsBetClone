@@ -31,23 +31,29 @@ import kotlinx.android.synthetic.main.tab_layout.*
 import java.lang.ref.WeakReference
 
 
+/**
+ * Activity related constants - public static final values in Java world
+ */
 const val SPORTS_TAB = "Sports"
 const val RACING_TAB = "Racing"
 const val TAB_SELECTED_STATE = "TabSelected"
 const val VIEW_PAGER_UPDATE_RATE = 5000L
 const val BET_SLIP_SHARED_PREF = "betslip"
 
+
+/**
+ * This class is reponsible for the home activity view. Hosting the view pager and the 2 navigation views. Creates the home fragment, handles the view pager
+ * updates and the tab listener
+ */
 class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, BetSlipDrawerOpened {
-
-
-    private lateinit var updateSportsViewPager: Runnable
-    private lateinit var updateRacingViewPager: Runnable
-    private val handler = Handler()
-    private var listener: FragmentCommunication? = null
-    private var navigationView: NavigationView? = null
-    private var betSlipNavigationView: NavigationView? = null
-    private lateinit var mViewModel: HomeActivityViewModel
-    private lateinit var preferenceManager: SharedPreferences
+    private lateinit var updateSportsViewPager: Runnable //Runnable to handle updating the sports view pager images
+    private lateinit var updateRacingViewPager: Runnable //Runnable to handle updating the racing view pager images
+    private val handler = Handler() //The handler that allows processing of the viewpager Runnable objects.
+    private var listener: FragmentCommunication? = null //The callback to the hosted fragment
+    private var navigationView: NavigationView? = null //Main navigation view
+    private var betSlipNavigationView: NavigationView? = null //bet slip navigation view
+    private lateinit var mViewModel: HomeActivityViewModel //the view model associated with this activity
+    private lateinit var preferenceManager: SharedPreferences //Shared preference instance
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,11 +68,16 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
 
         preferenceManager = PreferenceManager.getDefaultSharedPreferences(this)
 
+        //Create the viewmodel for this activity
         mViewModel = ViewModelProviders.of(this).get(HomeActivityViewModel::class.java)
+
+        //update the betslip with the stores betslip value
         mViewModel.betSlipValue.value = preferenceManager.getInt(BET_SLIP_SHARED_PREF, 0)
 
+        //create the navigation views
         navigationView = NavTools(this).configureNavView(this, toolbarMain, nav_view)
         betSlipNavigationView = NavTools(this).configureBetSlipView(this, betSlip_nav_view)
+
 
         createFragment()
         createViewPagers()
@@ -74,6 +85,13 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
         observeBetSlip()
     }
 
+
+    /**
+     * Observe the betslip such that when the viewmodels live data regarding the betslip value changes, the betslip is animated and sharedpreferences
+     * is updated.
+     * Also handles updating of the bet objects added to the betslip navigation view - i.e when these are removed from the betslip, the view models live data
+     * betSlipItems is updated and triggers a call to the observer to update the recyclerview
+     */
     @SuppressLint("ApplySharedPref")
     private fun observeBetSlip() {
         mViewModel.betSlipValue.observe(this, Observer {
@@ -103,6 +121,10 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
     }
 
 
+    /*
+    Save the users currently selected tab when on Pause is called. When on resume is then later called the user is returned to the tab they
+    had currently selected
+     */
     @SuppressLint("ApplySharedPref")
     override fun onPause() {
         super.onPause()
@@ -112,6 +134,10 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
         }
     }
 
+
+    /*
+    On resume returns the user to the tab they had selected previously
+     */
     override fun onResume() {
         super.onResume()
         tabLayout.getTabAt(PreferenceManager.getDefaultSharedPreferences(this).getInt(TAB_SELECTED_STATE, 1))?.select()
@@ -119,6 +145,9 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
     }
 
 
+    /**
+     * Create the fragment that this activity is hosting - The home fragment
+     */
     private fun createFragment() {
         val fragment = HomeFragment(this)
         setListener(fragment)
@@ -130,6 +159,11 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
 
     }
 
+
+    /**
+     * Create the tab on click listeners which update the view pager with the relevant images and also call to the hosted fragment view the listener
+     * instance that a tab has been selected in order to update any displayed data
+     */
     private fun createTabListener() {
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -156,6 +190,11 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
         })
     }
 
+
+    /**
+     * Handles the creation of the view pagers - These images change frequently in the real app and are most likely hosted and populated
+     * via Picasso - Here they are a static list of images that simulate the real behaviour of the app.
+     */
     private fun createViewPagers() {
         val sportsImages = arrayOf(
             R.drawable.sports_image_1,
@@ -188,12 +227,19 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
     }
 
 
+    /**
+     * Animates the betslip to pulse when items are added or removed
+     */
     private fun animateBetSlip() {
         bet_slip.pulse()
         bet_slip_amount.pulse()
     }
 
 
+    /**
+     * Sets a handler to post a runnable every VIEW_PAGER_UPDATE_RATE milliseconds.
+     * The runnable simply updates the current displayed item in the view pager
+     */
     private fun setTimer() {
         updateSportsViewPager = Runnable {
             if (view_pager_sports.currentItem + 1 == view_pager_sports.adapter?.count) {
@@ -214,12 +260,19 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
         }
     }
 
+
+    /**
+     * Begins the view pager updates
+     */
     private fun startViewPagerUpdates() {
         Handler().postDelayed({ updateSportsViewPager.run() }, VIEW_PAGER_UPDATE_RATE)
         Handler().postDelayed({ updateRacingViewPager.run() }, VIEW_PAGER_UPDATE_RATE)
     }
 
 
+    /**
+     * Changes the viewpager depending on which tab has been selected
+     */
     override fun updateViewPager(tag: String) {
         when (tag) {
             SPORTS_TAB -> {
@@ -239,6 +292,10 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
         }
     }
 
+
+    /**
+     * Sets the lsitener for this activity, this is used for communication between this activity and the hosted fragment
+     */
     private fun setListener(listener: FragmentCommunication) {
         this.listener = listener
     }
@@ -253,6 +310,10 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
 
     }
 
+
+    /**
+     * Get all bets from the model when the betslip is opened
+     */
     override fun onOpenBetSlip() {
         mViewModel.getAllBets()
     }

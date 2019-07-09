@@ -80,6 +80,7 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.2'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+
     def room_version = "2.1.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"

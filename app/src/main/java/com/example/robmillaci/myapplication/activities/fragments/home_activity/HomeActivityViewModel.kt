@@ -22,18 +22,21 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.lang.IllegalStateException
 
+/**
+ * The view model for HomeActivityView
+ */
 class HomeActivityViewModel(application: Application) : AndroidViewModel(application), LifecycleObserver {
-    var sectionDataSports: MutableLiveData<ArrayList<SectionDataModel>> = MutableLiveData()
-    var sectionDataRacing: MutableLiveData<ArrayList<SectionDataModel>> = MutableLiveData()
-    var betSlipItems: MutableLiveData<ArrayList<IEventObject>>? = MutableLiveData<ArrayList<IEventObject>>().default(ArrayList())
-    var betSlipValue = MutableLiveData<Int>().default(0)
+    var sectionDataSports: MutableLiveData<ArrayList<SectionDataModel>> = MutableLiveData() //Live data for sports events
+    var sectionDataRacing: MutableLiveData<ArrayList<SectionDataModel>> = MutableLiveData() //Live data for racing events
+    var betSlipItems: MutableLiveData<ArrayList<IEventObject>>? = MutableLiveData<ArrayList<IEventObject>>().default(ArrayList()) //Live data for events added to the bet slip
+    var betSlipValue = MutableLiveData<Int>().default(0) //Live data for the number of events added to the betslip
 
-    private var database: AppDatabase? = createDatabase()
-    private var sportsDao: SportsDAO? = null
-    private var racingDao: RacingDAO? = null
+    private var database: AppDatabase? = createDatabase() //This apps Room database instance
+    private var sportsDao: SportsDAO? = null //sports room DAO
+    private var racingDao: RacingDAO? = null //racing room DAO
 
 
-    private  var dbUpdateObserver  =  object : CompletableObserver {
+    private var dbUpdateObserver  =  object : CompletableObserver { //Observe database updates and update the betslip value on completion
 
         override fun onComplete() {
             betSlipValue.value = betSlipItems?.value?.size
@@ -46,6 +49,9 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
     }
 
 
+    /**
+     * Returns all bets from the room database for both sports items and racing items
+     */
     fun getAllBets(){
         val combinedList : ArrayList<IEventObject>? = ArrayList()
 
@@ -67,6 +73,10 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
 
     }
 
+    /**
+     * Called when we are updating the betslip with a new event object. This method updates the betSlipItems live data object as well as
+     * adding/removing from the room database
+     */
     fun updateBetSlip(eventObject: IEventObject,position : Int, add: Boolean) {
         if (add) {
             this.betSlipItems?.value?.add(eventObject)
@@ -100,6 +110,10 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
     }
 
 
+    /**
+     * Retrieves our Room database. AppDatabase (Room) is created as a Singleton
+     * Also created our DAO's
+     */
     private fun createDatabase(): AppDatabase {
         database = AppDatabase.getAppDataBase(getApplication<Application>().applicationContext)
 
@@ -114,6 +128,11 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
     }
 
 
+    /**
+     * Gets all our racing data via Retrofit which returns a Single response (similar to an observable)
+     * We subscribe on Schedulers.io for asynch retrieval and observe on successful response on the main thread - updating the racing live data and notifying the observer
+     * set in the home fragment to perform relevant UI changes
+     */
     fun getRacingData() {
         val callClient = Retrofit.Init.retrofitInstance.create(BetSportsAPI::class.java)
         callClient.getRacingData()
@@ -135,6 +154,11 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
     }
 
 
+    /**
+     * Gets all our sports data via Retrofit which returns a Single response (similar to an observable)
+     * We subscribe on Schedulers.io for asynch retrieval and observe on successful response on the main thread - updating the sports live data
+     * and notifying the observer set in the home fragment  to perform relevant UI changes
+     */
     fun getSportsData() {
         val callClient = Retrofit.Init.retrofitInstance.create(BetSportsAPI::class.java)
         callClient.getSportsData()

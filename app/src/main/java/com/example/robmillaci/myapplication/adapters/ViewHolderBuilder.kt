@@ -7,7 +7,10 @@ import com.example.robmillaci.myapplication.extension_functions.inflate
 import com.example.robmillaci.myapplication.pojos.EventType
 import java.lang.ref.WeakReference
 
-class ViewHolderBuilder(val weakContext : WeakReference<Context>,val parent : ViewGroup) {
+/**
+ * Helper class for building the viewholder type for SectionListDataAdapter
+ */
+class ViewHolderBuilder(private val weakContext : WeakReference<Context>, val parent : ViewGroup) {
     fun get(isMainEvent : Boolean, eventType : EventType) : SectionListDataAdapter.MyViewHolder {
         return when {
             isMainEvent -> {

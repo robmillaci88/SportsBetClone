@@ -2,6 +2,9 @@ package com.example.robmillaci.myapplication.pojos
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Enum class outlining the specific types of Racing/Sports events
+ */
 enum class SpecificTypes {
     @SerializedName("RUGBY")
     RUGBY{

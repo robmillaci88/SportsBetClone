@@ -10,6 +10,9 @@ import kotlinx.android.synthetic.main.view_pager_layout.view.*
 import java.lang.ref.WeakReference
 
 @Suppress("DEPRECATION")
+/**
+ * Adapter for the Viewpager displaying the sports and racing images
+ */
 class ViewPagerAdapter(val images: Array<Int>, val context: WeakReference<Context>) : androidx.viewpager.widget.PagerAdapter() {
 
     @SuppressLint("InflateParams")

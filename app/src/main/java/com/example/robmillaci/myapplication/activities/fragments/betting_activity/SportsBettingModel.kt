@@ -3,6 +3,9 @@ package com.example.robmillaci.myapplication.activities.fragments.betting_activi
 import com.example.robmillaci.myapplication.adapters.BetsAdapter
 import com.example.robmillaci.myapplication.pojos.SportsEvent
 
+/**
+ * A dummy model class that acts as though it is retrieving data from JSON/source system
+ */
 class SportsBettingModel {
 
     internal fun retrieveDataForObject(sportsObject: SportsEvent): MutableList<BetsAdapter.MyGroupItem> {

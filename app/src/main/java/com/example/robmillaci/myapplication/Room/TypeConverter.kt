@@ -7,6 +7,9 @@ import com.example.robmillaci.myapplication.retrofit.Retrofit
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+/**
+ * Room additional type converters
+ */
 class TypeConverter {
         @TypeConverter
         fun fromString(jsonString: String): ArrayList<IEventObject> {

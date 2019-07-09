@@ -8,9 +8,11 @@ import com.example.robmillaci.myapplication.extension_functions.toHours
 import com.example.robmillaci.myapplication.extension_functions.toMinutes
 import com.example.robmillaci.myapplication.extension_functions.toSeconds
 
+/**
+ * Class responsible for creating timers for each sports event.
+ * This displays the time until the start of the event and counts down until the time is to be removed
+ */
 class Timer(val callback: ItimerCommunication) {
-
-
         fun createTimer(holderTextView: TextView?, holderPos : Int ,millisToGo: Long) {
             val seconds = millisToGo.toSeconds()
             val minutes = millisToGo.toMinutes()

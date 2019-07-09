@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.example.robmillaci.myapplication.adapters.BetsAdapter
 import com.example.robmillaci.myapplication.pojos.SportsEvent
 
+/**
+ * The View model for SportsBettingActivityView
+ */
 class SportsBettingActivityViewModel : ViewModel() {
     private val mModel: SportsBettingModel = SportsBettingModel()
     //retrieve the data from the model related to the specific sports object clicked - returning all relevant betting data

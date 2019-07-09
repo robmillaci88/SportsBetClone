@@ -50,6 +50,9 @@ class SectionListDataAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val event = itemList[position].eventObject
 
+        /**
+         * Logic to update the viewholders views depending on the Event type
+         */
         when {
             event.getEventType() == EventType.SPORTS && !event.isMainEvent() -> {
                 val sportsObject = event as SportsEvent
@@ -68,7 +71,6 @@ class SectionListDataAdapter(
                 holder.mainEventButtonOne?.setOnClickListener { mainEventOnClick(it, mainEventObject, position) }
                 holder.mainEventButtonTwo?.setOnClickListener { mainEventOnClick(it, mainEventObject, position) }
 
-
                 holder.mainEventGame?.text = mainEventObject.gameName
                 holder.homeOdds?.text = mainEventObject.homeOdds.toString()
                 holder.awayOdds?.text = mainEventObject.awayOdds.toString()
@@ -83,13 +85,17 @@ class SectionListDataAdapter(
             }
         }
 
+        //Determine which icon the viewholder should display
         val iconDrawable = holder.icon?.determineImageDrawable(weakContext, event.getSpecificTypes())
         holder.icon?.setImageDrawable(iconDrawable)
 
+        //Determine the time before an event starts, the start time and the end time of an event
         val diff = Duration.between(LocalDateTime.now(), event.startTime.gimmeDateTime())
         val startTime = event.startTime.gimmeDateTime()
         val endTime = event.endTime.gimmeDateTime()
 
+
+        //Logic for displaying specific timing related UI changes such as 'live now' badge and the timer background
         if (startTime.dayOfYear <= LocalDateTime.now().dayOfYear + 1 && startTime.hour - LocalDateTime.now().hour <= 24) {
             when {
                 LocalDateTime.now() < endTime
@@ -103,6 +109,8 @@ class SectionListDataAdapter(
             holder.timer?.visibility = View.GONE
         }
 
+
+        //The on click event of each individual event object, to start the Sports betting activity for that specific event
         holder.itemView.setOnClickListener {
             val bettingActivityIntent = Intent(
                 weakContext.get(),
@@ -114,6 +122,8 @@ class SectionListDataAdapter(
     }
 
 
+    //Separated on click for a 'Main event' in order to implement the button click effects (blue ripple) as well as determining
+    //the chosen odds and chosen outcomes
     private fun mainEventOnClick(view: View, eventObject: SportsEvent, position: Int) {
         if (view.tag == weakContext.get()?.getString(R.string.unclicked_button)) {
             view.setBackgroundResource(R.drawable.ripple_button_blue_pressed)
@@ -157,6 +167,10 @@ class SectionListDataAdapter(
         return itemList[position].hashCode().toLong() + System.currentTimeMillis()
     }
 
+
+    /*
+    The individual view holders for sports events, racings events and main events
+     */
     open class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val dateTime: TextView? = view.date_time
         val icon: ImageView? = view.icon
@@ -183,6 +197,10 @@ class SectionListDataAdapter(
         val awayOdds: TextView? = view.away_odds
     }
 
+
+    /**
+     * Method to remove an event once the time has run out and update the recyclerview
+     */
     override fun removeItemOverTime(position: Int) {
         itemList.removeAt(position)
         notifyItemChanged(position)

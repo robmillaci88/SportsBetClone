@@ -23,15 +23,22 @@ import com.example.robmillaci.myapplication.miscs.SpacesItemDecoration
 import com.example.robmillaci.myapplication.pojos.IEventObject
 import java.lang.ref.WeakReference
 
-
-class SportsAdapter(
+/**
+ * The adapter to populate the recyclerview in the home fragment with sports or racing related events
+ * Each item within this adapter contains another recyclerview with the individual. This adapter displays the heading of each section
+ * along with creating a sections recycler view to show the individual events (EventSectionAdapter)
+ */
+class EventAdapter(
     private val weakContext: WeakReference<Context>, private var itemList: MutableLiveData<ArrayList<SectionDataModel>>?
 ) : RecyclerView.Adapter<MyViewHolder>(), IadapterCallback {
 
     var mViewModel: HomeActivityViewModel? = null
 
+
+    /**
+     * On click for when a bet item / event item is clicked, informing the view model to update the bet slip
+     */
     override fun betItemClicked(eventObject: IEventObject,position : Int , add: Boolean) {
-        Log.d("CLICKKKK","bet item clicked called")
         if (add) {
             mViewModel?.updateBetSlip(eventObject, position,true)
         } else {
@@ -39,22 +46,33 @@ class SportsAdapter(
         }
     }
 
+
+
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         mViewModel = ViewModelProviders.of(weakContext.get() as FragmentActivity).get(HomeActivityViewModel::class.java)
 
     }
 
+
+
     @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(R.layout.sports_recyclerview.inflate(weakContext.get(), null))
     }
 
+
+    /**
+     * Sets the data to be using in this adapter. This is used to make changes between sports and racing data and also,
+     * although not implemented, it would be used when observing the live sports data in the view model in order to capture changes to the data
+     * if a retrofit call was made every X minutes to retrieve the latest data?
+     */
     fun setData(itemList: ArrayList<SectionDataModel>?) {
         val newData = MutableLiveData<ArrayList<SectionDataModel>>()
         newData.value = itemList
         this.itemList = newData
     }
+
 
     override fun getItemCount(): Int {
         return itemList?.value?.size ?: 0
@@ -66,6 +84,7 @@ class SportsAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.title.text = this.itemList?.value?.get(position)?.headerTitle
 
+        //Create the recyclerview contained within this event section
         val itemListDataAdapter: SectionListDataAdapter? =
             SectionListDataAdapter(weakContext, itemList?.value?.get(position)!!.allItemsInSection, this)
 
@@ -95,9 +114,11 @@ class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 }
 
 
+/**
+ * A single Event object that forms part of the individual events within SectionDataModel
+ */
 class SingleItem {
     lateinit var eventObject: IEventObject
-
 }
 
 data class SectionDataModel(val headerTitle: String, val allItemsInSection: ArrayList<SingleItem>) {

@@ -15,6 +15,10 @@ import com.example.robmillaci.myapplication.extension_functions.determineImageDr
 import com.example.robmillaci.myapplication.pojos.IEventObject
 import java.lang.ref.WeakReference
 
+/**
+ * The Adapter for the bet slip navigation drawer
+ * This class has taken the data binding approach as an example of how to use xml data binding within a recyclerview adapter
+ */
 class BetSlipAdapter(val weakContext: WeakReference<Context>, val items: ArrayList<IEventObject>?) :
     RecyclerView.Adapter<BetSlipAdapter.MyBetSlipViewHolder>() {
     var mViewModel: HomeActivityViewModel =
