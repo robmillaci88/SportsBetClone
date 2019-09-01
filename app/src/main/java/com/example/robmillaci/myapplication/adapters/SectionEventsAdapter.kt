@@ -112,12 +112,14 @@ class SectionListDataAdapter(
 
         //The on click event of each individual event object, to start the Sports betting activity for that specific event
         holder.itemView.setOnClickListener {
-            val bettingActivityIntent = Intent(
-                weakContext.get(),
-                SportsBettingActivityView::class.java
-            )
-            bettingActivityIntent.putExtra("object", event)
-            weakContext.get()?.startActivity(bettingActivityIntent)
+            if (event.getEventType() == EventType.SPORTS) {
+                val bettingActivityIntent = Intent(
+                    weakContext.get(),
+                    SportsBettingActivityView::class.java
+                )
+                bettingActivityIntent.putExtra("object", event)
+                weakContext.get()?.startActivity(bettingActivityIntent)
+            }
         }
     }
 
@@ -126,7 +128,7 @@ class SectionListDataAdapter(
     //the chosen odds and chosen outcomes
     private fun mainEventOnClick(view: View, eventObject: SportsEvent, position: Int) {
         if (view.tag == weakContext.get()?.getString(R.string.unclicked_button)) {
-            view.setBackgroundResource(R.drawable.ripple_button_blue_pressed)
+            view.setBackgroundResource(R.drawable.bet_btn_pressed)
             view.tag = weakContext.get()?.getString(R.string.clicked_button)
             (view as ViewGroup).children.forEach {
                 if (it is TextView) {
@@ -142,7 +144,7 @@ class SectionListDataAdapter(
             eventObject.betName = "Head to head"
             adapterCallback.betItemClicked(eventObject, position, true)
         } else {
-            view.setBackgroundResource(R.drawable.ripple_button_blue)
+            view.setBackgroundResource(R.drawable.bet_btn_unpressed)
             view.tag = weakContext.get()?.getString(R.string.unclicked_button)
             (view as ViewGroup).children.forEach {
                 if (it is TextView) {

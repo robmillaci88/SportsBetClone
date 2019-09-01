@@ -6,5 +6,9 @@
     <string name="win_or_place_string">Win or Place</string>
     <string name="clicked_button">Clicked</string>
     <string name="unclicked_button">unClicked</string>
+    <string name="button_image">button_image</string>
+    <string name="create_a">Create a</string>
+    <string name="same_race_multi">Same-Race Multi</string>
+    <string name="now">now</string>
 
 </resources>

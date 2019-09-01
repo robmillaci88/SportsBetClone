@@ -3,9 +3,11 @@
 package com.example.robmillaci.myapplication.activities.fragments.betting_activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -45,6 +47,11 @@ import java.lang.ref.WeakReference
  * The view class for a specific sports betting activity
  */
 class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, BetsAdapter.IViewbetClickedListener {
+    override fun removeTheBet(view: View) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
     private var sportsObject: SportsEvent? = null //the specific sports betting object
     private lateinit var recyclerViewItems: MutableList<BetsAdapter.MyGroupItem> //recyclew view to display the types of bets
     private lateinit var mSportsBettingViewModel: SportsBettingActivityViewModel //the view model for this view
@@ -75,7 +82,6 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         getSportsObject(intent.extras)
 
 
-
         /*
         Create the viewmodels associated with this activity, also restore the bet slip value
          */
@@ -85,6 +91,7 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
 
 
         createRecyclerViewData()
+        createOnClickListeners()
         createRecyclerView()
         addAppbarOffsetListener()
         createScrollListener()
@@ -94,7 +101,13 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
         Return all bets that a user has previously added to the bet slip - This wouldnt be saved in the real application due to
         the fact that bets can expire / change but for demo purposes we have saved the users previously added bets
          */
-        mHomeActivityViewModel.getAllBets()
+        // mHomeActivityViewModel.getAllBets()
+    }
+
+    private fun createOnClickListeners() {
+        image_slide.setOnClickListener {
+            startActivity(Intent(this, RacingMultiBetView::class.java))
+        }
     }
 
 
@@ -132,7 +145,6 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
     }
 
 
-
     /*
     Scroll listener to show/hide the bottom "Same game multi" bar.
     //todo this needs work!
@@ -154,7 +166,6 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
                 allowedToTranslateOut = true
             }
         }
-
     }
 
 
@@ -230,15 +241,18 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
     }
 
     override fun onOpenBetSlip() {
-        mHomeActivityViewModel.getAllBets()
+//        mHomeActivityViewModel.getAllBets()
     }
 
     /**
      * On Click event when a betting item is clicked
      */
     override fun betClicked(view: View, eventObject: IEventObject, betName: String) {
+        Log.d("REMOVE","now in the activity")
         if (view.tag != getString(R.string.clicked_button)) {
-            view.setBackgroundResource(R.drawable.ripple_button_blue_pressed)
+            Log.d("REMOVE","matched the if")
+
+            view.setBackgroundResource(R.drawable.bet_btn_pressed)
             odds_tv.setTextColor(resources.getColor(android.R.color.white))
             view.tag = getString(R.string.clicked_button)
 
@@ -247,13 +261,15 @@ class SportsBettingActivityView : AppCompatActivity(), BetSlipDrawerOpened, Bets
             eventObject.chosenOutcomes = child_tv.text.toString()
             eventObject.betName = betName
 
-            mHomeActivityViewModel.updateBetSlip(eventObject, 0, true)
+            //  mHomeActivityViewModel.updateBetSlip(eventObject, 0, true)
 
         } else {
-            view.setBackgroundResource(R.drawable.ripple_button_blue)
-            view.findViewById<TextView>(R.id.odds_tv).setTextColor(resources.getColor(android.R.color.black))
+            Log.d("REMOVE","matched the else")
+
+            view.setBackgroundResource(R.drawable.bet_btn_unpressed)
+            odds_tv.setTextColor(resources.getColor(android.R.color.black))
             view.tag = getString(R.string.unclicked_button)
-            mHomeActivityViewModel.updateBetSlip(eventObject, 0, false)
+            //  mHomeActivityViewModel.updateBetSlip(eventObject, 0, false)
         }
     }
 

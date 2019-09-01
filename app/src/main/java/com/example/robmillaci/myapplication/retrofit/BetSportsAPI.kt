@@ -4,6 +4,7 @@ import com.example.robmillaci.myapplication.adapters.SectionDataModel
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 const val BASE_URL = "http://www.mocky.io/v2/"
 //Mock JSON HTTP responses
@@ -15,5 +16,8 @@ interface BetSportsAPI {
 
     @GET("5d23db5e2e00003ca7c3f219") //The mocky.io path to retrieve our fake racing data
     fun getRacingData(): Single<ArrayList<SectionDataModel>>
+
+    @GET("5d23db5e2e00003ca7c3f219/{id}") //The mocky.io path to retrieve our fake racing data
+    fun getSpecificRaceData(@Path("id") id : Int): Single<ArrayList<SectionDataModel>>
 }
 

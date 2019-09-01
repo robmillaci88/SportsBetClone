@@ -1,13 +1,11 @@
-package com.example.robmillaci.myapplication.Room
+package com.example.robmillaci.myapplication.room
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.robmillaci.myapplication.pojos.IEventObject
 import com.example.robmillaci.myapplication.pojos.SportsEvent
 import io.reactivex.Completable
-import io.reactivex.Observable
 import io.reactivex.Single
 
 @Dao

@@ -48,7 +48,7 @@ class BetSlipAdapter(val weakContext: WeakReference<Context>, val items: ArrayLi
 
         holder.deleteBet.setOnClickListener {
             val itemToRemove = items.get(holder.adapterPosition)
-            mViewModel.updateBetSlip(itemToRemove, holder.adapterPosition, false)
+    //        mViewModel.updateBetSlip(itemToRemove, holder.adapterPosition, false)
             notifyItemRemoved(holder.adapterPosition);
         }
     }

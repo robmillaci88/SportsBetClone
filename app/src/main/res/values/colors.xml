@@ -17,4 +17,8 @@
     <color name="night_blue">#001a33</color>
     <color name="night_blue_accent">#00264d</color>
     <color name="night_blue_accent_light">#007fff</color>
+    <color name="bet_button_grey">#F8F8F8</color>
+    <color name="seaGreenunpressed">#3CB371</color>
+    <color name="seaGreenPressed">#00FF00</color>
+    <color name="colorPrimaryLight">#00a3db</color>
 </resources>

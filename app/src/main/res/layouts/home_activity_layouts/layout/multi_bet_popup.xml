@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content" android:id="@+id/linearLayout"
+                                                   android:background="@color/colorPrimaryDark">
+
+    <TextView
+            android:text="ODDS:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bowlbyone_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/odds_fixed_tv" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/odds_amount_tv"
+            app:layout_constraintHorizontal_chainStyle="packed" android:textColor="@android:color/white"/>
+    <TextView
+            android:text="N/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bowlbyone_regular"
+            android:id="@+id/odds_amount_tv" app:layout_constraintTop_toTopOf="@+id/odds_fixed_tv"
+            app:layout_constraintStart_toEndOf="@+id/odds_fixed_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/odds_fixed_tv" android:layout_marginStart="4dp"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/legs_tv"
+            app:layout_constraintHorizontal_chainStyle="packed" android:textColor="@android:color/white"/>
+    <TextView
+            android:text="(1 LEG)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bowlbyone_regular"
+            android:id="@+id/legs_tv" app:layout_constraintTop_toTopOf="@+id/odds_amount_tv"
+            android:layout_marginStart="4dp" app:layout_constraintStart_toEndOf="@+id/odds_amount_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/odds_amount_tv" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_chainStyle="packed"
+            android:textColor="@android:color/holo_orange_light"/>
+    <Button
+            android:text="Clear Bet Slip"
+            android:layout_width="0dp"
+            android:background="@drawable/bet_btn_unpressed"
+            android:layout_height="40dp"
+            android:id="@+id/button" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/button4"
+            android:layout_marginStart="16dp" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/odds_fixed_tv" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:textAllCaps="false"/>
+    <Button
+            android:text="Add to Bet Slip"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/drawable_green_bet_btn"
+            android:id="@+id/button4"
+            app:layout_constraintStart_toEndOf="@+id/button" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp" android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="@+id/button" android:textColor="@android:color/white"
+            android:textAllCaps="false"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
                                                    android:layout_height="match_parent" android:id="@+id/bet_slip_layout">
 
     <ImageView
-            android:layout_width="40dp"
+            android:layout_width="@dimen/betslip_image_width"
             android:layout_height="62dp"
             app:layout_collapseMode="pin"
             android:background="@drawable/betslip_icon"

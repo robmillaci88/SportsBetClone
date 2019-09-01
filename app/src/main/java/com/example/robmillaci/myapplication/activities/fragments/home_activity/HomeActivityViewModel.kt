@@ -1,131 +1,131 @@
 package com.example.robmillaci.myapplication.activities.fragments.home_activity
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
-import com.example.robmillaci.myapplication.Room.AppDatabase
-import com.example.robmillaci.myapplication.Room.RacingDAO
-import com.example.robmillaci.myapplication.Room.SportsDAO
 import com.example.robmillaci.myapplication.adapters.SectionDataModel
 import com.example.robmillaci.myapplication.extension_functions.default
 import com.example.robmillaci.myapplication.extension_functions.notifyObserver
 import com.example.robmillaci.myapplication.pojos.IEventObject
-import com.example.robmillaci.myapplication.pojos.RacingEvent
-import com.example.robmillaci.myapplication.pojos.SportsEvent
 import com.example.robmillaci.myapplication.retrofit.BetSportsAPI
 import com.example.robmillaci.myapplication.retrofit.Retrofit
-import io.reactivex.*
+import io.reactivex.CompletableObserver
+import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.lang.IllegalStateException
 
 /**
  * The view model for HomeActivityView
  */
 class HomeActivityViewModel(application: Application) : AndroidViewModel(application), LifecycleObserver {
-    var sectionDataSports: MutableLiveData<ArrayList<SectionDataModel>> = MutableLiveData() //Live data for sports events
-    var sectionDataRacing: MutableLiveData<ArrayList<SectionDataModel>> = MutableLiveData() //Live data for racing events
-    var betSlipItems: MutableLiveData<ArrayList<IEventObject>>? = MutableLiveData<ArrayList<IEventObject>>().default(ArrayList()) //Live data for events added to the bet slip
+    var sectionDataSports: MutableLiveData<ArrayList<SectionDataModel>> =
+        MutableLiveData() //Live data for sports events
+    var sectionDataRacing: MutableLiveData<ArrayList<SectionDataModel>> =
+        MutableLiveData() //Live data for racing events
+    var betSlipItems: MutableLiveData<ArrayList<IEventObject>>? =
+        MutableLiveData<ArrayList<IEventObject>>().default(ArrayList()) //Live data for events added to the bet slip
     var betSlipValue = MutableLiveData<Int>().default(0) //Live data for the number of events added to the betslip
 
-    private var database: AppDatabase? = createDatabase() //This apps Room database instance
-    private var sportsDao: SportsDAO? = null //sports room DAO
-    private var racingDao: RacingDAO? = null //racing room DAO
+//    private var database: AppDatabase? = createDatabase() //This apps Room database instance
+//    private var sportsDao: SportsDAO? = null //sports room DAO
+//    private var racingDao: RacingDAO? = null //racing room DAO
+//
 
+    private var dbUpdateObserver =
+        object : CompletableObserver { //Observe database updates and update the betslip value on completion
 
-    private var dbUpdateObserver  =  object : CompletableObserver { //Observe database updates and update the betslip value on completion
-
-        override fun onComplete() {
-            betSlipValue.value = betSlipItems?.value?.size
-        }
-        override fun onSubscribe(d: Disposable) {
-        }
-        override fun onError(e: Throwable) {
-            e.printStackTrace()
-        }
-    }
-
-
-    /**
-     * Returns all bets from the room database for both sports items and racing items
-     */
-    fun getAllBets(){
-        val combinedList : ArrayList<IEventObject>? = ArrayList()
-
-        val sportsObjectFromDB =sportsDao?.getAll()
-            ?.subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe { returnedSportsList, throwableSports ->
-                if(returnedSportsList != null){
-                    combinedList?.addAll(returnedSportsList)
-                }
-                racingDao?.getAll()?.subscribeOn(Schedulers.io())
-                    ?.subscribe{returnedRacingList, throwableRacing ->
-                        if(returnedRacingList != null){
-                            combinedList?.addAll(returnedRacingList)
-                        }
-                        betSlipItems?.postValue(combinedList)
-                    }
+            override fun onComplete() {
+                betSlipValue.value = betSlipItems?.value?.size
             }
 
-    }
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onError(e: Throwable) {
+                e.printStackTrace()
+            }
+        }
+
+
+//    /**
+//     * Returns all bets from the room database for both sports items and racing items
+//     */
+//    fun getAllBets(){
+//        val combinedList : ArrayList<IEventObject>? = ArrayList()
+//
+//        val sportsObjectFromDB =sportsDao?.getAll()
+//            ?.subscribeOn(Schedulers.io())
+//            ?.observeOn(AndroidSchedulers.mainThread())
+//            ?.subscribe { returnedSportsList, throwableSports ->
+//                if(returnedSportsList != null){
+//                    combinedList?.addAll(returnedSportsList)
+//                }
+//                racingDao?.getAll()?.subscribeOn(Schedulers.io())
+//                    ?.subscribe{returnedRacingList, throwableRacing ->
+//                        if(returnedRacingList != null){
+//                            combinedList?.addAll(returnedRacingList)
+//                        }
+//                        betSlipItems?.postValue(combinedList)
+//                    }
+//            }
+//
+//    }
 
     /**
      * Called when we are updating the betslip with a new event object. This method updates the betSlipItems live data object as well as
      * adding/removing from the room database
      */
-    fun updateBetSlip(eventObject: IEventObject,position : Int, add: Boolean) {
-        if (add) {
-            this.betSlipItems?.value?.add(eventObject)
-            if (eventObject is SportsEvent) {
-                sportsDao?.insert(eventObject)
-                    ?.subscribeOn(Schedulers.io())
-                    ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe(dbUpdateObserver)
+//    fun updateBetSlip(eventObject: IEventObject,position : Int, add: Boolean) {
+//        if (add) {
+//            this.betSlipItems?.value?.add(eventObject)
+//            if (eventObject is SportsEvent) {
+//                sportsDao?.insert(eventObject)
+//                    ?.subscribeOn(Schedulers.io())
+//                    ?.observeOn(AndroidSchedulers.mainThread())
+//                    ?.subscribe(dbUpdateObserver)
+//
+//            } else if (eventObject is RacingEvent) {
+//                racingDao?.insert(eventObject)
+//                    ?.subscribeOn(Schedulers.io())
+//                    ?.observeOn(AndroidSchedulers.mainThread())
+//                    ?.subscribe(dbUpdateObserver)
+//
+//            }
+//        } else {
+//           this.betSlipItems?.value?.removeAt(position)
+//            if (eventObject is SportsEvent) {
+//                sportsDao?.delete(eventObject)
+//                    ?.subscribeOn(Schedulers.io())
+//                    ?.observeOn(AndroidSchedulers.mainThread())
+//                    ?.subscribe(dbUpdateObserver)
+//            } else if (eventObject is RacingEvent) {
+//                racingDao?.delete(eventObject)
+//                    ?.subscribeOn(Schedulers.io())
+//                    ?.observeOn(AndroidSchedulers.mainThread())
+//                    ?.subscribe(dbUpdateObserver)
+//            }
+//        }
+//    }
+//
 
-            } else if (eventObject is RacingEvent) {
-                racingDao?.insert(eventObject)
-                    ?.subscribeOn(Schedulers.io())
-                    ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe(dbUpdateObserver)
-
-            }
-        } else {
-           this.betSlipItems?.value?.removeAt(position)
-            if (eventObject is SportsEvent) {
-                sportsDao?.delete(eventObject)
-                    ?.subscribeOn(Schedulers.io())
-                    ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe(dbUpdateObserver)
-            } else if (eventObject is RacingEvent) {
-                racingDao?.delete(eventObject)
-                    ?.subscribeOn(Schedulers.io())
-                    ?.observeOn(AndroidSchedulers.mainThread())
-                    ?.subscribe(dbUpdateObserver)
-            }
-        }
-    }
-
-
-    /**
-     * Retrieves our Room database. AppDatabase (Room) is created as a Singleton
-     * Also created our DAO's
-     */
-    private fun createDatabase(): AppDatabase {
-        database = AppDatabase.getAppDataBase(getApplication<Application>().applicationContext)
-
-        sportsDao = database?.getSportsDao()
-        racingDao = database?.getRacingDao()
-
-        if (database!= null) {
-            return database!!
-        }else{
-            throw IllegalStateException("Error creating database")
-        }
-    }
+//    /**
+//     * Retrieves our Room database. AppDatabase (Room) is created as a Singleton
+//     * Also created our DAO's
+//     */
+//    private fun createDatabase(): AppDatabase {
+//        database = AppDatabase.getAppDataBase(getApplication<Application>().applicationContext)
+//
+//        sportsDao = database?.getSportsDao()
+//        racingDao = database?.getRacingDao()
+//
+//        if (database!= null) {
+//            return database!!
+//        }else{
+//            throw IllegalStateException("Error creating database")
+//        }
+//    }
 
 
     /**
@@ -148,7 +148,7 @@ class HomeActivityViewModel(application: Application) : AndroidViewModel(applica
                 }
 
                 override fun onError(e: Throwable) {
-                e.printStackTrace()
+                    e.printStackTrace()
                 }
             })
     }

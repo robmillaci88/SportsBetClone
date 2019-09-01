@@ -72,7 +72,7 @@
             <Spinner
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/toolbar_spinner"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintEnd_toStartOf="@+id/search_icon"
                     app:layout_constraintStart_toStartOf="@+id/toolbarSportsBetting" android:layout_marginLeft="50dp"
                     android:layout_marginStart="50dp"
                     android:visibility="gone"
@@ -86,7 +86,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/login_join"
                     android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
                     app:layout_constraintTop_toTopOf="@+id/login_join"
-                    app:layout_constraintBottom_toBottomOf="@+id/login_join" android:id="@+id/imageView"/>
+                    app:layout_constraintBottom_toBottomOf="@+id/login_join" android:id="@+id/search_icon"/>
             <TextView
                     android:text="Login/Join"
                     android:layout_width="wrap_content"

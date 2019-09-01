@@ -315,7 +315,7 @@ class HomeActivityView : AppCompatActivity(), HomeFragment.ActivityListener, Bet
      * Get all bets from the model when the betslip is opened
      */
     override fun onOpenBetSlip() {
-        mViewModel.getAllBets()
+     //   mViewModel.getAllBets()
     }
 
 

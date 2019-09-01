@@ -14,7 +14,8 @@ class RacingEvent(
     var raceName: String, //the race name
     override var startTime: String, //the start time of the event
     override var endTime: String, //the end time of the event
-    var type : String = "RacingEvent" //The type used for successfully parsing the JSON data with our custom interface adapter
+    var type : String = "RacingEvent", //The type used for successfully parsing the JSON data with our custom interface adapter
+    var raceId : Int = 0
 ) : IEventObject {
 
 

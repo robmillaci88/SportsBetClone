@@ -40,9 +40,9 @@ class EventAdapter(
      */
     override fun betItemClicked(eventObject: IEventObject,position : Int , add: Boolean) {
         if (add) {
-            mViewModel?.updateBetSlip(eventObject, position,true)
+      //      mViewModel?.updateBetSlip(eventObject, position,true)
         } else {
-            mViewModel?.updateBetSlip(eventObject, position,false)
+      //      mViewModel?.updateBetSlip(eventObject, position,false)
         }
     }
 

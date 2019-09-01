@@ -1,4 +1,4 @@
-package com.example.robmillaci.myapplication.Room
+package com.example.robmillaci.myapplication.room
 
 import androidx.room.TypeConverter
 import com.example.robmillaci.myapplication.pojos.IEventObject

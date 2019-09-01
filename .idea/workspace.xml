@@ -2,11 +2,17 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="pixel_3_xl" />
+        <device id="pixel" />
+        <device id="Nexus 6P" />
+        <device id="Nexus 5X" />
+        <device id="pixel_2" />
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="PREFER" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="OBSERVING" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -15,8 +21,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="327c0b21-4e6a-4576-983d-5900f7f9a5ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/bowlbyone_regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/MainApplication.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/horse_icon_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/horses_icon_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/circle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/drawable_green_bet_btn.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/green_btn.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/font/bowlbyone_regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/activity_racing_mutli_bet_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/blueprint.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/content_racing_multi.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/multi_bet_popup.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/multi_racing_toolbar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/racing_multi_main_content.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/tab_layout_racing_mult.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
@@ -29,36 +60,40 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_ui_1_0_0_alpha04_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_ui_1_0_0_alpha04_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_ui_ktx_1_0_0_alpha04_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_ui_ktx_1_0_0_alpha04_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_tbuonomo_andrui_viewpagerdotsindicator_3_0_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_tbuonomo_andrui_viewpagerdotsindicator_3_0_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/NavTools.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/NavTools.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/AppDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/TypeConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/TypeConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/room/AppDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/RacingDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/room/RacingDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/SportsDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/room/SportsDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/TypeConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/room/TypeConverter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/fragments/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/fragments/HomeFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetsAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionListDataAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SportsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewHolderBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewHolderBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewPagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewPagerAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/GlobalClickListeners.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/Timer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/Timer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/EventType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/EventType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/IEventObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/IEventObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/Animations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/Animations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/SpaceItemDecorator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/SpaceItemDecorator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/RacingEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/RacingEvent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SpecificTypes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SpecificTypes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SportsEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SportsEvent.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/BetSportsAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/BetSportsAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/InterfaceAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/InterfaceAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/Retrofit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/Retrofit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable-v21/ripple_button_blue.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable-v21/bet_btn_unpressed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable-v21/ripple_button_blue_pressed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable-v21/bet_btn_pressed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/drawable_bet_button.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/drawable_bet_button.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slid_nav_view_main_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slid_nav_view_main_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_children_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_children_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_recycler_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_recycler_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/main_event_card_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/main_event_card_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/slide_in_image.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/slide_in_image.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout-v21/collapsable_toolbar_sports_betting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout-v21/collapsable_toolbar_sports_betting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/app_bar_sports_betting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/app_bar_sports_betting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/collapsable_toolbar_sports_betting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/collapsable_toolbar_sports_betting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,88 +153,89 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewPagerAdapter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/slide_in_image.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1340">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetView.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="740">
+              <caret line="75" column="56" selection-start-line="75" selection-start-column="56" selection-end-line="75" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetsAdapter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1051">
-              <caret line="129" column="76" lean-forward="true" selection-start-line="129" selection-start-column="76" selection-end-line="129" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1840">
-              <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityViewModel.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetModel.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
-              <caret line="28" column="59" lean-forward="true" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="29" column="86" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_event.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="940">
-              <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/content_racing_multi.xml">
           <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="51" column="17" selection-end-line="68" selection-end-column="54" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_layout.xml">
-          <provider editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/multi_racing_toolbar.xml">
           <provider selected="true" editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="78" column="66" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="66" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="1380">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewHolderBuilder.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/blueprint.xml">
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="1060">
+              <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/circle.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -209,20 +245,17 @@
       <list>
         <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
-        <option value="resourceFile" />
         <option value="Kotlin Interface" />
+        <option value="Class" />
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
-        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addItemDecoration</find>
-      <find>onResume</find>
-      <find>Katerina</find>
       <find>Ashlei</find>
       <find>Ashle</find>
       <find>center</find>
@@ -250,6 +283,9 @@
       <find>onResum</find>
       <find>public abstract class BetSlipEventBinding</find>
       <find>DatabindingUtil</find>
+      <find>onScroll</find>
+      <find>Intent</find>
+      <find>Call</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -258,40 +294,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/racingDao.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/home_activity/fragments/HomeFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/SportsDAO.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/RacingDAO.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/LiveData.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/content_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/home_activity/HomeActivityView.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_children_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/GlobalClickListeners.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/betting_activity/SportsBettingModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/Animations.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/home_activity/HomeActivityViewModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/betting_activity/SportsBettingActivityView.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slid_navview_main_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/activity_sports_betting.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/splash_screen/SplashScreen.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/Utils.kt" />
-        <option value="$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/dataBindingGenBaseClassesDebug/out/com/example/robmillaci/myapplication/databinding/BetSlipEventBindingImpl.java" />
-        <option value="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/robmillaci/myapplication/DataBinderMapperImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_event.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionListDataAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityView.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityViewModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityView.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityViewModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/Timer.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/IEventObject.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/EventType.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/ISpecificTypes.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SpecificTypes.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/BetSportsAPI.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/RacingEvent.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SportsEvent.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/AppDatabase.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/InterfaceAdapter.kt" />
@@ -302,21 +304,55 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SportsAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/fragments/HomeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.kt" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewHolderBuilder.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/Animations.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/app_bar_sports_betting.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/room/AppDatabase.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/multi_racing_toolbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMutliBetView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/BetSportsAPI.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/RacingEvent.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/content_racing_multi.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_recycler_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/SpaceItemDecorator.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_children_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable-v21/ripple_button_blue.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/drawable_bet_button.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/activity_racing_mutli_bet_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/green_btn.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/drawable_green_bet_btn.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/multi_bet_popup.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetsAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/racing_multi_main_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/MainApplication.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/circle.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/slide_in_image.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/tab_layout_racing_mult.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/blueprint.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="13" />
-    <option name="y" value="37" />
+    <option name="x" value="614" />
+    <option name="y" value="295" />
     <option name="width" value="1400" />
-    <option name="height" value="967" />
+    <option name="height" value="990" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -414,11 +450,6 @@
             <path>
               <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
@@ -426,45 +457,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-              <item name="betting_activity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-              <item name="home_activity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-              <item name="splash_screen" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
@@ -475,48 +467,12 @@
             </path>
             <path>
               <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="extension_functions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="miscs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="pojos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="retrofit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="myapplication" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Room" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyApplication - Copy" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -794,6 +750,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -826,6 +783,7 @@
       <recent name="com.example.robmillaci.myapplication" />
     </key>
     <key name="android.template.packageName">
+      <recent name="com.example.robmillaci.myapplication.activities.fragments.betting_activity" />
       <recent name="com.example.robmillaci.myapplication" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -836,10 +794,11 @@
       <recent name="C:\Users\Rob\Downloads\Line\MyApplication - Copy\app\src\main\java\com\example\robmillaci\myapplication\extension_functions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rob\Downloads\Line\MyApplication - Copy\app\src\main\res\layouts\home_activity_layouts\font" />
+      <recent name="C:\Users\Rob\Downloads\Line\MyApplication - Copy\app\src\main\assets\fonts" />
       <recent name="C:\Users\Rob\Downloads\Line\MyApplication - Copy\app\src\main\res\drawable" />
       <recent name="C:\Users\Rob\Downloads\Line\MyApplication\app\src\main\res\drawable" />
       <recent name="C:\Users\Rob\Downloads\Line\MyApplication\app\src\main\res\layouts\home_activity_layouts\layout" />
-      <recent name="C:\Users\Rob\Downloads\Line\MyApplication\app\src\main\res\layout" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.robmillaci.myapplication.databinding" />
@@ -958,7 +917,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
@@ -966,11 +924,11 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="simpleUML" order="5" weight="0.32995737" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.2889126" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.1705757" />
       <window_info id="Image Layers" order="7" />
       <window_info id="Resources Explorer" order="8" />
       <window_info id="Structure" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49946696" weight="0.46333334" />
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49946696" visible="true" weight="0.46555555" />
       <window_info anchor="bottom" id="Run" order="1" />
       <window_info anchor="bottom" id="Android Profiler" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50053304" side_tool="true" />
@@ -987,7 +945,7 @@
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.32995737" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.17697228" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.17217484" />
       <window_info anchor="right" id="Device File Explorer" order="6" side_tool="true" weight="0.32995737" />
     </layout>
     <layout-to-restore>
@@ -997,16 +955,16 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="simpleUML" order="5" weight="0.32995737" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.19402985" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.1705757" />
       <window_info id="Image Layers" order="7" />
       <window_info id="Resources Explorer" order="8" />
       <window_info id="Structure" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49946696" visible="true" weight="0.4611111" />
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.49946696" weight="0.46555555" />
       <window_info anchor="bottom" id="Run" order="1" />
       <window_info anchor="bottom" id="Android Profiler" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50053304" side_tool="true" />
       <window_info anchor="bottom" id="TODO" order="4" />
-      <window_info anchor="bottom" x="22" y="371" width="1876" height="297" id="Logcat" order="5" sideWeight="0.49946696" weight="0.33222222" />
+      <window_info anchor="bottom" x="22" y="371" width="1876" height="297" id="Logcat" order="5" sideWeight="0.49946696" visible="true" weight="0.33222222" />
       <window_info anchor="bottom" id="Version Control" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Debug" order="8" />
@@ -1018,338 +976,363 @@
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.32995737" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.17377399" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.22921109" />
       <window_info anchor="right" id="Device File Explorer" order="6" side_tool="true" weight="0.32995737" />
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/activity_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/font/bowlbyone_regular.ttf">
+      <provider selected="true" editor-type-id="fontseditor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/dataBindingGenBaseClassesDebug/out/com/example/robmillaci/myapplication/databinding/BetSlipEventBindingImpl.java" />
-    <entry file="file://$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/dataBindingGenBaseClassesDebug/out/com/example/robmillaci/myapplication/databinding/BetSlipBinding.java" />
-    <entry file="file://$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/fragments/HomeFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
+          <caret line="40" column="75" lean-forward="true" selection-start-line="40" selection-start-column="75" selection-end-line="40" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/robmillaci/myapplication/DataBinderMapperImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-405">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/view/LayoutInflater.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-709">
-          <caret line="226" column="33" selection-start-line="226" selection-start-column="33" selection-end-line="226" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="6" column="88" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/splash_screen/SplashScreen.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/GlobalClickListeners.kt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/Animations.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/LayoutViewFunctions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/NumberFunctions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/CustomLinearLayoutManager.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/IEventObject.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/ISpecificTypes.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/Timer.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="102" selection-start-line="12" selection-start-column="102" selection-end-line="12" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/SpaceItemDecorator.kt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/Lists.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/extension_functions/LiveData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SpecificTypes.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/RacingEvent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="16" column="93" lean-forward="true" selection-start-line="16" selection-start-column="93" selection-end-line="16" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/SportsEvent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="19" column="125" selection-start-line="19" selection-start-column="125" selection-end-line="19" selection-end-column="125" />
+        <state relative-caret-position="569">
+          <caret line="119" column="6" selection-start-line="119" selection-start-column="6" selection-end-line="119" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/BetSportsAPI.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/InterfaceAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="20" column="105" lean-forward="true" selection-start-line="20" selection-start-column="105" selection-end-line="20" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/retrofit/Retrofit.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="40" column="146" selection-start-line="40" selection-start-column="146" selection-end-line="40" selection-end-column="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/RacingDAO.kt">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/SportsDAO.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/RacingEvent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        <state relative-caret-position="380">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/AppDatabase.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        <state relative-caret-position="280">
+          <caret line="120" column="60" selection-start-line="120" selection-start-column="60" selection-end-line="120" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/robmillaci/myapplication/Room/SportsDAO_Impl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+        <state relative-caret-position="440">
+          <caret line="22" column="70" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="70" />
+          <folding>
+            <element signature="e#81#869#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/robmillaci/myapplication/Room/RacingDAO_Impl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="168" column="47" selection-start-line="168" selection-start-column="47" selection-end-line="168" selection-end-column="47" />
+        <state relative-caret-position="260">
+          <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/Room/TypeConverter.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/content_sports_betting.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        <state relative-caret-position="-509">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityView.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/activity_splash_screen.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.h6ah4i.android.widget.advrecyclerview/advrecyclerview/1.0.0/52d52576239d7ff8828610a8121e09eb2d3cf03e/advrecyclerview-1.0.0-sources.jar!/com/h6ah4i/android/widget/advrecyclerview/expandable/ExpandableItemAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1552">
-          <caret line="236" column="52" selection-start-line="236" selection-start-column="52" selection-end-line="236" selection-end-column="52" />
+        <state relative-caret-position="491">
+          <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="35" column="102" selection-start-line="35" selection-start-column="102" selection-end-line="35" selection-end-column="102" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/NavTools.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="280">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewPagerAdapter.kt">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        <state relative-caret-position="-170" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="78" column="66" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/pojos/EventType.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_recycler_view.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/miscs/SpaceItemDecorator.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_type_children_view.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#709#741#0" expanded="true" />
+            <element signature="e#764#797#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/drawable_square_btn.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/betslip_icon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slid_nav_view_main_layout.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/green_btn.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable-v21/bet_btn_unpressed.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/drawable_bet_button.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/drawable_green_bet_btn.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/sports_recyclerview.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/fragments/HomeFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="28" column="59" lean-forward="true" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/SectionEventsAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1051">
-          <caret line="129" column="76" lean-forward="true" selection-start-line="129" selection-start-column="76" selection-end-line="129" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_layout.xml">
-      <provider editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-160">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/racing_multi_main_content.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/horses_icon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/activity_racing_mutli_bet_view.xml">
       <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/multi_bet_popup.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="52" column="64" selection-start-line="52" selection-start-column="64" selection-end-line="52" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/activity_sports_betting.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/sports_bet_item_layouts/layout/app_bar_sports_betting.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
+        </state>
+      </provider>
       <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-        </state>
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/dataBindingGenBaseClassesDebug/out/com/example/robmillaci/myapplication/databinding/BetSlipEventBinding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/bet_slip_event.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="940">
-          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetSlipAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="29" column="86" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/EventSectionAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1840">
-          <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="78" column="66" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewHolderBuilder.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/SportsBettingActivityView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="135" column="55" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/MainApplication.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/home_activity/HomeActivityView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="213" column="26" selection-start-line="213" selection-start-column="26" selection-end-line="213" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/tab_layout_racing_mult.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="36" column="78" selection-start-line="36" selection-start-column="78" selection-end-line="36" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/ViewPagerAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/slide_in_image.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1340">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="75" column="56" selection-start-line="75" selection-start-column="56" selection-end-line="75" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/content_racing_multi.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="51" column="17" selection-end-line="68" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/multi_racing_toolbar.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/layout/blueprint.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1060">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layouts/home_activity_layouts/drawable/circle.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/adapters/BetsAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
+        <state relative-caret-position="320">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/robmillaci/myapplication/activities/fragments/betting_activity/RacingMultiBetModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                     android:background="@color/very_light_grey"
+                                                     android:id="@+id/main_container_coord"
+                                                     android:layout_width="match_parent"
+                                                     android:layout_height="match_parent">
+
+    <include
+            layout="@layout/multi_racing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:id="@+id/betting_scroll_view"
+                                           app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                                           android:background="@color/background_colour_grey">
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:layout_width="match_parent"
+                          android:id="@+id/racing_special_offers"
+                          android:layout_height="wrap_content"
+                          android:paddingTop="10dp"
+                          android:paddingBottom="10dp"
+                          android:background="@color/pastel_yellow"
+                          android:orientation="horizontal">
+                <ImageView android:layout_width="30dp" android:layout_height="30dp"
+                           android:layout_gravity="center"
+                           android:src="@drawable/specials_button"
+                           android:background="@color/pastel_yellow"
+                           android:layout_marginLeft="10dp" android:layout_marginStart="10dp"/>
+                <LinearLayout android:layout_width="match_parent" android:background="@color/pastel_yellow"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="20dp"
+                              android:text="Special Offer"
+                              android:textStyle="bold"
+                              android:layout_marginLeft="10dp"
+                              android:textSize="12sp"
+                              android:textColor="@android:color/black"
+                              android:background="@color/pastel_yellow" android:layout_marginStart="10dp"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="20dp"
+                              android:text="Lot's of special offers text ........."
+                              android:layout_marginLeft="10dp"
+                              android:textColor="@android:color/black"
+                              android:textSize="12sp"
+
+                              android:background="@color/pastel_yellow"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                    android:id="@+id/topDivider"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/racing_special_offers"
+                    android:layout_height="4dp"
+                    android:background="?android:attr/listDivider"
+            />
+
+            <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:layout_below="@+id/topDivider"
+                                                       android:layout_alignParentBottom="true"
+                                                       android:layout_marginBottom="0dp"
+                                                       android:id="@+id/horses_recycler_view"/>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

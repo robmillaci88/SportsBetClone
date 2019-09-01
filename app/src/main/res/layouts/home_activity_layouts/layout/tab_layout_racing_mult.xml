@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin">
+
+    <com.google.android.material.tabs.TabLayout android:layout_width="match_parent"
+                                                android:layout_height="?attr/actionBarSize"
+                                                android:id="@+id/tabLayout"
+                                                app:tabIndicatorHeight="4dp"
+                                                app:tabMode="scrollable"
+                                                app:tabTextColor="@android:color/white"
+                                                app:tabIndicatorColor="@android:color/holo_orange_light"
+                                                android:background="@android:color/transparent"
+                                                app:layout_anchorGravity="bottom"
+                                                app:layout_collapseMode="none"
+                                                android:layout_gravity="bottom"
+                                                app:tabRippleColor="@android:color/white">
+        <com.google.android.material.tabs.TabItem android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:tag="Top Markets"
+                                                  android:text="Top Markets"/>
+        <com.google.android.material.tabs.TabItem android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:text="Winner"/>
+        <com.google.android.material.tabs.TabItem android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:text="Top 2 Finisher"/>
+        <com.google.android.material.tabs.TabItem android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:text="Top 3 Finisher"/>
+        <com.google.android.material.tabs.TabItem android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:text="Top 4 Finisher"/>
+    </com.google.android.material.tabs.TabLayout>
+
+</FrameLayout>

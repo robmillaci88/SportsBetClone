@@ -20,13 +20,11 @@ fun View.pulse(){
 }
 
 fun View.translationsSlide(offset : Float, applyAlpha : Float ){
-
         this.animate().apply {
             this.translationX(offset)
             this.duration = 500
             this.alpha(applyAlpha)
         }
-
 }
 
 

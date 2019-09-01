@@ -5,8 +5,12 @@
     <dimen name="betslip_image_margin">8dp</dimen>
     <dimen name="betslip_amount_width">40dp</dimen>
     <dimen name="bet_type_child_recyclerview_height">60dp</dimen>
-    <dimen name="single_bet_button_width">100dp</dimen>
+    <dimen name="single_bet_button_width">85dp</dimen>
     <dimen name="betting_tab_layout_height">40dp</dimen>
     <dimen name="small_text">12sp</dimen>
     <dimen name="betslip_header_height">70dp</dimen>
+    <dimen name="bet_slip_image_offset_width">60dp</dimen>
+    <dimen name="single_bet_button_height">40dp</dimen>
+    <dimen name="multi_bet_layout_margin_left">20dp</dimen>
+    <dimen name="multi_bet_layout_margin_right">20dp</dimen>
 </resources>

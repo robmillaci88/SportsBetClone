@@ -1,0 +1,33 @@
+<androidx.drawerlayout.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+    <include
+            layout="@layout/racing_multi_main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    <com.google.android.material.navigation.NavigationView
+            android:id="@+id/betSlip_nav_view"
+            android:layout_width="@dimen/betslip_nav_view_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/very_light_grey"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_bet_slip">
+        <include
+                layout="@layout/bet_slid_nav_view_main_layout"
+                android:layout_marginTop="@dimen/betslip_header_height"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
